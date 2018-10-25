@@ -23,7 +23,6 @@ class CheckList extends React.Component {
             players.sort((a, b) => a.position - b.position);
         }
         this.props.setPlayers(players);
-        // this.props.history.push("/game");
     }
     render() {
         const { players, handleBack } = this.props;
