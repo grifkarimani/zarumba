@@ -1,0 +1,333 @@
+@import "_gamestat";
+@import "_payersstat";
+@import "_gameinfo";
+
+.css-game {
+    padding: 0 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: calc(100% - 135px);
+    .css-total-whites {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        padding: 10px;
+        width: 88%;
+        .whiteBallItem {
+            width: 20px;
+            height: 20px;
+            margin: 2px;
+            background-color: #fff;
+            border-radius: 50%;
+            border: 2px solid $_mainBorderColor;
+            justify-self: center;
+        }
+    }
+
+    .css-body {
+        height: 80%;
+        display: flex;
+        justify-content: space-between;
+        .css-left-bar {
+            width: 16%;
+            border-right: 1px solid $_mainBorderColor;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-start;
+            .css-timer,
+            .css-info {
+                width: 88%;
+                background-color: #f7f7f7;
+                border-radius: 6px;
+                padding: 10px;
+            }
+            .css-info {
+                margin-bottom: 0;
+            }
+            .css-timer {
+                flex-grow: 3;
+            }
+        }
+        .css-center-block {
+            width: 58%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            // align-items: center;
+            .css-bull {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                .css-bull-item {
+                    min-width: 60px;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    .css-bull-item-name {
+                        margin-bottom: 4px;
+                        max-width: 124px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                    }
+                    .css-bull-image {
+                        width: 46px;
+                        height: 46px;
+                    }
+                }
+            }
+            .css-main {
+                width: 100%;
+                background-color: #f7f7f7;
+                border-radius: 6px;
+                height: 100%;
+                display: flex;
+                justify-content: space-between;
+                flex-direction: column;
+                .css-players-grid {
+                    display: flex;
+                    flex-direction: column;
+                    .css-player {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 10px;
+                        border-bottom: 1px solid $_mainBorderColor;
+                        &.blue {
+                            background-color: #2aafff0d;
+                        }
+                        &.red {
+                            background-color: #a92d2d0d;
+                        }
+                        .css-overlay {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
+                            .css-over-title {
+                                color: #fff;
+                                font-size: 50px;
+                                margin-bottom: 40px;
+                            }
+                            .css-over-controls {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                .css-button {
+                                    color: #fff;
+                                    margin: 20px;
+                                    width: 280px;
+                                    height: 100px;
+                                }
+                            }
+                        }
+                        .css-player-bar {
+                            display: flex;
+                            align-items: center;
+                            .css-button {
+                                padding: 0;
+                                width: 62px;
+                                height: 62px;
+                                border-radius: 50%;
+                                border: none;
+                                color: white;
+                                &.dis {
+                                    cursor: default;
+                                    opacity: 0.5;
+                                    &:hover {
+                                        box-shadow: 0 0 0 white;
+                                        opacity: 0.5;
+                                    }
+                                }
+                            }
+                            .css-name {
+                                width: 200px;
+                                max-width: 200px;
+                                font-size: 36px;
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                word-break: none;
+                                white-space: nowrap;
+                                margin-right: 10px;
+                            }
+                            .css-current {
+                                font-size: 30px;
+                                font-weight: 700;
+                                width: 110px;
+                                height: 50px;
+                                border: 1px solid $_mainBorderColor;
+                                border-radius: 6px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                padding-left: 0px;
+                                transition: 1s;
+                                margin-right: 40px;
+                                &.blue {
+                                    color: $_lightBlueText;
+                                    border: 1px solid $_lightBlueText;
+                                }
+                                &.red {
+                                    color: $_redText;
+                                    border: 1px solid $_redText;
+                                }
+                                &.grey {
+                                    color: $_mainTextColor;
+                                    border: 1px solid $_mainTextColor;
+                                }
+                            }
+                            .css-add {
+                                margin-right: 40px;
+                                .css-button {
+                                    background-color: $_orangeText;
+                                    font-size: 45px;
+                                }
+                            }
+                            .css-white {
+                                margin-right: 40px;
+                                .css-button {
+                                    background-color: #ffffff;
+                                    font-size: 45px;
+                                    border: 1px solid $_mainBorderColor;
+                                    color: $_mainTextColor;
+                                }
+                            }
+                            .css-bull-button {
+                                margin-right: 40px;
+                                .css-button {
+                                    display: flex;
+                                    justify-content: center;
+                                    align-items: center;
+                                    opacity: 0.5;
+                                    transition: 0.5s;
+                                    &.dis {
+                                        opacity: 0.5;
+                                        &:hover {
+                                            opacity: 0.5;
+                                        }
+                                    }
+                                    .css-bull-icon {
+                                        width: 60px;
+                                    }
+                                    &:hover {
+                                        box-shadow: none;
+                                        opacity: 1;
+                                    }
+                                }
+                            }
+                            .css-double {
+                                margin-right: 42px;
+                                .css-button {
+                                    background-color: $_redText;
+                                    font-size: 45px;
+                                }
+                            }
+                            .css-last {
+                                .css-button {
+                                    color: $_mainTextColor;
+                                    border: 1px solid $_mainBorderColor;
+                                    border-radius: 4px;
+                                    width: 100px;
+                                    height: 40px;
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+                        .css-price {
+                            font-size: 24px;
+                            width: 70px;
+                            text-align: center;
+                            border: 1px solid $_mainBorderColor;
+                            border-radius: 6px;
+                            padding: 8px;
+                        }
+                    }
+                }
+                .css-udo {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            }
+            .css-main-block-footer {
+                padding: 4px 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                height: 80px;
+                .css-button {
+                    margin-right: 12px;
+                }
+            }
+        }
+        .css-right-bar {
+            width: 24%;
+            border-left: 1px solid $_mainBorderColor;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            .css-statistic {
+                margin-bottom: 10px;
+            }
+            .css-log {
+                flex-grow: 1;
+                overflow: auto;
+                .css-logs-container {
+                    .css-log-item {
+                        display: flex;
+                        font-size: 14px;
+                        .css-log-time {
+                            margin: 0 6px;
+                            font-size: 14px;
+                            min-width: 40px;
+                            &.red {
+                                color: $_redText;
+                                font-weight: 600;
+                            }
+                        }
+                        .css-log-name {
+                            margin: 0 6px;
+                            color: #2aafff;
+                            width: 60px;
+                            min-width: 60px;
+                            max-width: 60px;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                        }
+                        .css-log-ball {
+                            margin: 0 6px;
+                            &.red {
+                                color: $_redText;
+                            }
+                            &.yellow {
+                                color: $_orangeText;
+                            }
+                        }
+                        .css-log-bulls {
+                            margin: 0 6px;
+                        }
+                    }
+                }
+            }
+            .css-statistic,
+            .css-log {
+                width: 92%;
+                background-color: #f7f7f7;
+                border-radius: 6px;
+                padding: 10px;
+            }
+        }
+    }
+    .css-footer {
+        height: 10%;
+        border-top: 1px solid $_mainBorderColor;
+        padding-top: 14px;
+        display: flex;
+        justify-content: flex-end;
+        .css-footer-controls {
+            .css-button {
+                padding: 16px 30px;
+            }
+        }
+    }
+}

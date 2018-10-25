@@ -1,0 +1,164 @@
+@mixin placeholder {
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
+}
+
+.css-app {
+    height: 100vh;
+    .css-header {
+        height: 76px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid $_mainBorderColor;
+        padding: 14px 60px;
+        margin-bottom: 30px;
+        .css-logo {
+            width: 16%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .css-loog-image {
+                width: 90px;
+                height: 90px;
+            }
+        }
+        .css-header-content {
+            flex-grow: 1;
+            padding: 16px;
+            .css-header-info {
+                .css-marker-container {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: baseline;
+                    .css-marker-title {
+                        font-size: 20px;
+                    }
+                    .css-marker-value {
+                        font-size: 26px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .css-navigation {
+            }
+        }
+    }
+    .componentContainer {
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+.css-button {
+    padding: 8px 30px;
+    border: 1px solid $_mainBorderColor;
+    background: none;
+    border-radius: 2px;
+    color: $_mainTextColor;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.2s;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        box-shadow: $_shadow;
+    }
+    &.removePlayer {
+        padding: 0;
+        padding: 0px;
+        height: 24px;
+        width: 24px;
+        border-radius: 50%;
+        border-color: #ff9393;
+    }
+}
+
+.css-text-input {
+    width: 340px;
+    padding: 8px;
+    font-size: 20px;
+    border-radius: 2px;
+    border: 1px solid $_mainBorderColor;
+    color: $_mainTextColor;
+    transition: 0.2s;
+    @include placeholder {
+        color: $_ligthTextColor;
+    }
+    &:focus {
+        outline: none;
+        box-shadow: $_shadow;
+    }
+}
+
+.css-600pxContainer {
+    margin-bottom: 20px;
+    text-align: justify;
+    height: 600px;
+    overflow: auto;
+    &.options {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #e0dddd;
+    }
+}
+
+.css-controls {
+    display: flex;
+    justify-content: flex-end;
+}
+.css-overlay-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .css-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $_overlay;
+        opacity: 0.5;
+    }
+    .css-overlay-content {
+        z-index: 101;
+        min-width: 460px;
+        background-color: white;
+        border: 1px solid $_mainBorderColor;
+        border-radius: 8px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .css-over-title {
+            font-size: 26px;
+        }
+        .css-over-controls {
+            margin-top: 26px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            .css-button {
+                width: 40%;
+                padding: 16px;
+            }
+        }
+    }
+}
