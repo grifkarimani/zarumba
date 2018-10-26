@@ -2,9 +2,6 @@ import React from "react";
 import { connect } from "react-redux";
 
 class Conditions extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     getConditions() {
         const {
             players,

@@ -4,13 +4,11 @@ import { connect } from "react-redux";
 import remove from "../../../media/remove.svg";
 import add from "../../../media/add.svg";
 import info from "../../../media/info.svg";
+import Marker from "../StartOptions/Marker";
 
 import { addNewPlayer, removePlayer, setPlayerName, clearValidationMessages } from "../Actions/actions";
 
 class Players extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const {
             players,
@@ -25,6 +23,7 @@ class Players extends React.Component {
         return (
             <div className="css-players">
                 <div className="css-players-controls">
+                    <Marker />
                     {players.map(player => {
                         return (
                             <div className="css-player-name" key={player.id}>

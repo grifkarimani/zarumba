@@ -26,7 +26,6 @@ class Marker extends React.Component {
         const { markerName, setMarkerName, players } = this.props;
         return (
             <div className="css-marker">
-                <div className="css-marker-title">Маркёр:</div>
                 <div className="css-marker-name">
                     <input
                         className="css-text-input"

@@ -5,6 +5,7 @@ import Rules from "../Rules/index.jsx";
 import Options from "../Options/index.jsx";
 import Game from "../Game/index.jsx";
 import Header from "./Header/index";
+import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
 
 class App extends React.Component {
@@ -12,12 +13,15 @@ class App extends React.Component {
         return (
             <div className="css-app">
                 <Header />
-                <Switch>
-                    <Route exact path="/" component={Rules} />
-                    <Route exact path="/options" component={Options} />
-                    <Route exact path="/game" component={Game} />
-                    <Route exact path="/results" component={Results} />
-                </Switch>
+                <LeftBar />
+                <div className="css-main-area">
+                    <Switch>
+                        <Route exact path="/" component={Rules} />
+                        <Route exact path="/options" component={Options} />
+                        <Route exact path="/game" component={Game} />
+                        <Route exact path="/results" component={Results} />
+                    </Switch>
+                </div>
             </div>
         );
     }

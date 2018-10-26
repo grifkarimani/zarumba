@@ -12,25 +12,31 @@
         @content;
     }
 }
-
+.viewport {
+    min-width: 1000px;
+}
 .css-app {
+    min-width: 1000px;
     height: 100vh;
     .css-header {
-        height: 76px;
+        min-width: 990px;
+        height: 80px;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        border-bottom: 1px solid $_mainBorderColor;
-        padding: 14px 60px;
-        margin-bottom: 30px;
+        background-color: $mainBackground;
+        box-shadow: 4px 4px 6px 0px #cecece;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 10px;
         .css-logo {
-            width: 16%;
             display: flex;
             justify-content: flex-start;
             align-items: center;
             .css-loog-image {
-                width: 90px;
-                height: 90px;
+                width: 50px;
+                height: 50px;
             }
         }
         .css-header-content {
@@ -54,9 +60,20 @@
             }
         }
     }
+    .css-left-bar {
+        position: fixed;
+        left: 0;
+        bottom: 10px;
+        top: 80px;
+        width: 200px;
+        background-color: $mainBackground;
+        box-shadow: 4px 4px 6px 0px #cecece;
+    }
     .componentContainer {
-        width: 50%;
-        margin: 0 auto;
+        width: calc(100% - 40px);
+        margin: 20px;
+        height: calc(100% - 40px);
+        overflow: auto;
     }
 }
 .css-button {
@@ -101,16 +118,15 @@
     }
 }
 
-.css-600pxContainer {
-    margin-bottom: 20px;
-    text-align: justify;
-    height: 600px;
-    overflow: auto;
-    &.options {
-        display: flex;
-        justify-content: space-between;
-        border-bottom: 1px solid #e0dddd;
-    }
+.css-main-area {
+    min-width: 780px;
+    // overflow: auto;
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    bottom: 10px;
+    left: 210px;
+    border: 1px solid #e6e6e6;
 }
 
 .css-controls {

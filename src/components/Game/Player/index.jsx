@@ -39,6 +39,10 @@ class Player extends React.Component {
                     playerId: id,
                     lastBall: lastBall
                 };
+            default:
+                return {
+                    playerId: id
+                };
         }
     }
     handleWhiteBall() {
@@ -56,16 +60,7 @@ class Player extends React.Component {
         this.setState({ isOverlayRed: true });
     }
     lastWhite(isYellowDroped) {
-        debugger;
-        const {
-            handleYellowBall,
-            onlyYellow,
-            withReverce,
-            isReverce,
-            saveAvers,
-            gameOverMessage,
-            saveReverce
-        } = this.props;
+        const { handleYellowBall, onlyYellow, withReverce, isReverce, saveAvers, gameOverMessage, saveReverce } = this.props;
         if (isYellowDroped) handleYellowBall(this.getOptionsFor("yellow"));
         if (onlyYellow) {
             this.setState({ isOverlayLast: false });
@@ -89,16 +84,7 @@ class Player extends React.Component {
     }
 
     lastRed(isYellowDroped) {
-        debugger;
-        const {
-            handleYellowBall,
-            handleLastBall,
-            withReverce,
-            isReverce,
-            saveAvers,
-            gameOverMessage,
-            saveReverce
-        } = this.props;
+        const { handleYellowBall, handleLastBall, withReverce, isReverce, saveAvers, gameOverMessage, saveReverce } = this.props;
         if (isYellowDroped) handleYellowBall(this.getOptionsFor("yellow"));
         handleLastBall(this.getOptionsFor("last"));
         this.setState({ isOverlayRed: false });
@@ -174,12 +160,7 @@ class Player extends React.Component {
                     />
                 ) : null}
                 {this.state.gameOver ? (
-                    <Overlay
-                        message="Конец игры."
-                        confirmButtonLabel="Показать Статистику"
-                        confirmButtonHendler={setPage}
-                        page="Results"
-                    />
+                    <Overlay message="Конец игры." confirmButtonLabel="Показать Статистику" confirmButtonHendler={setPage} page="Results" />
                 ) : null}
 
                 <div className="css-player-bar">
@@ -187,10 +168,7 @@ class Player extends React.Component {
                     <div className={["css-current"].join(" ")}>{current}</div>
                     <div className="css-white">
                         <button
-                            className={[
-                                "css-button",
-                                isWhitesAre ? "" : "dis"
-                            ].join(" ")}
+                            className={["css-button", isWhitesAre ? "" : "dis"].join(" ")}
                             onClick={this.handleWhiteBall.bind(this)}
                             disabled={!isWhitesAre}
                         >
@@ -200,14 +178,8 @@ class Player extends React.Component {
 
                     <div className="css-add">
                         <button
-                            className={[
-                                "css-button",
-                                isWhitesAre ? "" : "dis"
-                            ].join(" ")}
-                            onClick={handleYellowBall.bind(
-                                this,
-                                this.getOptionsFor("yellow")
-                            )}
+                            className={["css-button", isWhitesAre ? "" : "dis"].join(" ")}
+                            onClick={handleYellowBall.bind(this, this.getOptionsFor("yellow"))}
                             disabled={!isWhitesAre}
                         >
                             +
@@ -215,27 +187,15 @@ class Player extends React.Component {
                     </div>
                     {!onlyYellow ? (
                         <div className="css-double">
-                            <button
-                                className="css-button"
-                                onClick={handleRedBall.bind(
-                                    this,
-                                    this.getOptionsFor("red")
-                                )}
-                            >
+                            <button className="css-button" onClick={handleRedBall.bind(this, this.getOptionsFor("red"))}>
                                 +
                             </button>
                         </div>
                     ) : null}
                     <div className="css-bull-button">
                         <button
-                            className={[
-                                "css-button",
-                                isWhitesAre ? "" : onlyYellow ? "" : "dis"
-                            ].join(" ")}
-                            onClick={handleBull.bind(
-                                this,
-                                this.getOptionsFor("bull")
-                            )}
+                            className={["css-button", isWhitesAre ? "" : onlyYellow ? "" : "dis"].join(" ")}
+                            onClick={handleBull.bind(this, this.getOptionsFor("bull"))}
                             disabled={onlyYellow ? false : !isWhitesAre}
                         >
                             <img className="css-bull-icon" src={img} alt="" />
@@ -244,34 +204,29 @@ class Player extends React.Component {
                     {!onlyYellow &&
                         !isWhitesAre && (
                             <div className="css-last">
-                                <button
-                                    className="css-button"
-                                    onClick={this.handleItWasLast.bind(this)}
-                                >
+                                <button className="css-button" onClick={this.handleItWasLast.bind(this)}>
                                     Закончил
                                 </button>
                             </div>
                         )}
                 </div>
-                {!nominalBallPrice ? (
-                    <div className="css-price">{current * ballPrice}</div>
-                ) : null}
+                {!nominalBallPrice ? <div className="css-price">{current * ballPrice}</div> : null}
             </div>
         );
     }
 }
 const mapStateToProps = state => {
-    const { options, game } = state;
+    const { OptionsReducer, GameReducer } = state;
     return {
-        ballPrice: options.ballPrice,
-        isReverce: game.isReverce,
-        lastBall: options.lastBall,
-        nominalBallPrice: options.nominalBallPrice,
-        onlyYellow: options.onlyYellow,
-        withReverce: options.withReverce,
-        redPoints: options.redPoints,
-        whites: game.whites,
-        lastBallByCost: options.lastBallByCost
+        ballPrice: OptionsReducer.ballPrice,
+        isReverce: GameReducer.isReverce,
+        lastBall: OptionsReducer.lastBall,
+        nominalBallPrice: OptionsReducer.nominalBallPrice,
+        onlyYellow: OptionsReducer.onlyYellow,
+        withReverce: OptionsReducer.withReverce,
+        redPoints: OptionsReducer.redPoints,
+        whites: GameReducer.whites,
+        lastBallByCost: OptionsReducer.lastBallByCost
     };
 };
 export default connect(mapStateToProps)(Player);

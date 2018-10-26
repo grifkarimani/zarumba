@@ -7,23 +7,9 @@ import Conditions from "../Conditions";
 
 import img from "../../media/bull.svg";
 
-import {
-    setBall,
-    setBull,
-    setWhite,
-    setYellow,
-    setRed,
-    setLast,
-    stratReverce,
-    setAvers,
-    setReverce,
-    setGameOverMessage
-} from "./Actions/actions";
+import { setBall, setBull, setWhite, setYellow, setRed, setLast, stratReverce, setAvers, setReverce, setGameOverMessage } from "./Actions/actions";
 
 class Game extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     playersWithBulls(players) {
         let damages = [];
         players.forEach(player => {
@@ -36,10 +22,11 @@ class Game extends React.Component {
         return damages;
     }
     render() {
+        console.log(this.props);
         const {
-            app,
-            options,
-            game,
+            AppReducer,
+            OptionsReducer,
+            GameReducer,
 
             handleBall,
             handleBull,
@@ -54,32 +41,11 @@ class Game extends React.Component {
             gameOverMessage
         } = this.props;
 
-        const {
-            withReverce,
-            payLoosers,
-            isRandom,
-            onlyYellow,
-            redPoints,
-            yellowPoints,
-            lastBall,
-            lastBallByCost,
-            nominalBallPrice,
-            ballPrice
-        } = this.props.options;
-        const {
-            isReverce,
-            players,
-            results,
-            totalBalls,
-            totalBulls,
-            whites,
-            reds,
-            yellows
-        } = this.props.game;
-        const bulls = this.playersWithBulls(game.players);
-        let whitesArr = new Array(
-            15 - (game.whites > 15 ? 15 : game.whites)
-        ).fill(0);
+        const { onlyYellow } = this.props.OptionsReducer;
+        const { isReverce, players = [], results, totalBalls, totalBulls, whites, reds, yellows } = this.props.GameReducer;
+        console.log("GameReducer.players", players);
+        const bulls = this.playersWithBulls(GameReducer.players);
+        let whitesArr = new Array(15 - (GameReducer.whites > 15 ? 15 : GameReducer.whites)).fill(0);
         return (
             <div className="css-game">
                 <div className="css-body">
@@ -90,10 +56,7 @@ class Game extends React.Component {
                         {whitesArr.length > 0 && (
                             <div className="css-total-whites">
                                 {whitesArr.map((ball, index) => (
-                                    <div
-                                        key={index}
-                                        className="whiteBallItem"
-                                    />
+                                    <div key={index} className="whiteBallItem" />
                                 ))}
                             </div>
                         )}
@@ -102,7 +65,7 @@ class Game extends React.Component {
                     <div className="css-center-block">
                         <div className="css-main">
                             <div className="css-players-grid">
-                                {game.players.map(player => {
+                                {GameReducer.players.map(player => {
                                     return (
                                         <Player
                                             key={player.id}
@@ -127,18 +90,9 @@ class Game extends React.Component {
                             <div className="css-main-block-footer">
                                 <div className="css-bull">
                                     {bulls.map((bull, index) => (
-                                        <div
-                                            key={index}
-                                            className="css-bull-item"
-                                        >
-                                            <div className="css-bull-item-name">
-                                                {bull.name}
-                                            </div>
-                                            <img
-                                                className="css-bull-image"
-                                                src={img}
-                                                alt=""
-                                            />
+                                        <div key={index} className="css-bull-item">
+                                            <div className="css-bull-item-name">{bull.name}</div>
+                                            <img className="css-bull-image" src={img} alt="" />
                                         </div>
                                     ))}
                                 </div>
@@ -187,40 +141,20 @@ class Game extends React.Component {
                         </div>
                         <div className="css-log">
                             <div className="css-logs-container">
-                                {game.log.map((it, index) => {
+                                {GameReducer.log.map((it, index) => {
                                     return it.ball == "bull" ? (
-                                        <div
-                                            key={index}
-                                            className="css-log-item"
-                                        >
-                                            <div className="css-log-time red">
-                                                {it.time}
-                                            </div>
+                                        <div key={index} className="css-log-item">
+                                            <div className="css-log-time red">{it.time}</div>
                                             <span>Игрок</span>
-                                            <div className="css-log-name">
-                                                {it.name}
-                                            </div>
+                                            <div className="css-log-name">{it.name}</div>
                                             <span>получил штраф</span>
                                         </div>
                                     ) : (
-                                        <div
-                                            key={index}
-                                            className="css-log-item"
-                                        >
-                                            <div className="css-log-time">
-                                                {it.time}
-                                            </div>
+                                        <div key={index} className="css-log-item">
+                                            <div className="css-log-time">{it.time}</div>
                                             <span>Игрок</span>
-                                            <div className="css-log-name">
-                                                {it.name}
-                                            </div>
-                                            <div
-                                                className={[
-                                                    "css-log-ball"
-                                                ].join(" ")}
-                                            >
-                                                {it.message}
-                                            </div>
+                                            <div className="css-log-name">{it.name}</div>
+                                            <div className={["css-log-ball"].join(" ")}>{it.message}</div>
                                         </div>
                                     );
                                 })}
@@ -237,26 +171,8 @@ class Game extends React.Component {
 const mapStateToProps = state => state;
 const mapDispatchToProps = dispatch => {
     return {
-        handleBall(
-            playerId,
-            points,
-            itWasRed,
-            playerName,
-            itWasLast,
-            lastBallPoints,
-            itWasWhite
-        ) {
-            dispatch(
-                setBall(
-                    playerId,
-                    points,
-                    itWasRed,
-                    playerName,
-                    itWasLast,
-                    lastBallPoints,
-                    itWasWhite
-                )
-            );
+        handleBall(playerId, points, itWasRed, playerName, itWasLast, lastBallPoints, itWasWhite) {
+            dispatch(setBall(playerId, points, itWasRed, playerName, itWasLast, lastBallPoints, itWasWhite));
         },
         handleBull(config) {
             dispatch(setBull(config));

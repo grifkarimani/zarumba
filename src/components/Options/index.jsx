@@ -49,29 +49,32 @@ class Options extends React.Component {
 
         const validation = this.validateNames(players);
         return (
-            <div className="css-options componentContainer">
-                {this.state.isOverlay && (
+            <div className="css-options">
+                {/* {this.state.isOverlay && (
                     <div className="css-overlay-container">
                         <div className="css-overlay" />
                         <div className="css-overlay-content">
                             <CheckList handleBack={this.hideOverlay} setPage={setPage} />
                         </div>
                     </div>
-                )}
-                <div className="css-600pxContainer options">
-                    <div className="css-players-list">
-                        <Players clearValidation={clearValidation} />
-                    </div>
-                    <div className="css-start-options-list">
-                        <StartOptions />
+                )} */}
+                <div className="css-content">
+                    <div className="css-options-wrapper">
+                        <div className="css-players-list">
+                            <Players clearValidation={clearValidation} />
+                        </div>
+                        <div className="css-start-options-list">
+                            <StartOptions />
+                        </div>
                     </div>
                 </div>
                 <div className="css-controls">
+                    {/* <button className="css-button">
+                            <Link to="/">Правила</Link>
+                        </button> */}
+                    {/* <button className="css-button" onClick={this.showStartOptionsList.bind(this, validation)}> */}
                     <button className="css-button">
-                        <Link to="/">Правила</Link>
-                    </button>
-                    <button className="css-button" onClick={this.showStartOptionsList.bind(this, validation)}>
-                        Старт
+                        <Link to="/game">Старт</Link>
                     </button>
                 </div>
             </div>

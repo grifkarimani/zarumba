@@ -1,15 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
 import StartOption from "./Option/index";
-import Marker from "./Marker";
 
 import { setOption, redRedPoints, incRedPoints, redLastBallPrice, incLastBallPrice, redBallPrice, incBallPrice } from "../Actions/actions";
 
 class StartOptions extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
     render() {
         const {
             withReverce,
@@ -32,7 +27,6 @@ class StartOptions extends React.Component {
         } = this.props;
         return (
             <div className="css-start-options">
-                <Marker />
                 <StartOption
                     optionWithSetContainer={false}
                     className="Reverce"
