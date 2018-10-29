@@ -24,49 +24,41 @@ import {
     CLEAR_VALIDATION_MESSAGES
 } from "./actionTypes";
 
-export const addNewPlayer = () => (
-    {
-        type: ADD_PLAYER,
-        payload: {
-            id: Date.now().toString(),
-            name: "",
-            canRemove: true
-        }
+export const addNewPlayer = () => ({
+    type: ADD_PLAYER,
+    payload: {
+        id: Date.now().toString(),
+        name: "",
+        canRemove: true
     }
-);
-export const removePlayer = (id) => (
-    {
-        type: DELETE_PLAYER,
-        payload: id
+});
+export const removePlayer = id => ({
+    type: DELETE_PLAYER,
+    payload: id
+});
+export const setPlayerName = event => ({
+    type: SET_NAME,
+    payload: {
+        id: event.target.id,
+        name: event.target.value
     }
-);
-export const setPlayerName = (event) => (
-    {
-        type: SET_NAME,
-        payload: {
-            id: event.target.id,
-            name: event.target.value
-        }
+});
+export const setOption = (key, value) => ({
+    type: SELECT_OPTION,
+    payload: {
+        key: key,
+        value: value
     }
-);
-export const setOption = (key, value) => (
-    {
-        type: SELECT_OPTION,
-        payload: {
-            key: key,
-            value: value
-        }
-    }
-);
+});
 
-export const setBallPrice = (event) => {
+export const setBallPrice = event => {
     let value = 1 * event.target.value;
 
     return {
         type: SET_PRICE,
         payload: value
-    }
-}
+    };
+};
 export const setStoreValue = (key, event) => {
     const value = 1 * event.target.value;
     return {
@@ -75,52 +67,48 @@ export const setStoreValue = (key, event) => {
             key: key,
             value: value
         }
-    }
-}
-export const setMarker = (event) => {
-    let value = event.target.value;
+    };
+};
+export const setMarker = name => {
+    let value = name;
     return {
         type: SET_MARKER,
         payload: value
-    }
-}
+    };
+};
 export const redRedPoints = () => {
     return {
         type: REDUCE_REDPOINTS
-    }
-}
+    };
+};
 export const incRedPoints = () => {
     return {
         type: INCREACE_REDPOINTS
-    }
-}
+    };
+};
 export const incLastBallPrice = () => {
     return {
         type: INCREACE_LASTBALLPRICE
-    }
-}
+    };
+};
 export const redLastBallPrice = () => {
     return {
         type: REDUCE_LASTBALLPRICE
-    }
-}
+    };
+};
 
 export const incBallPrice = () => {
     return {
         type: INCREACE_BALLPRICE
-    }
-}
+    };
+};
 export const redBallPrice = () => {
     return {
         type: REDUCE_BALLPRICE
-    }
-}
-export const setValidationMessages = (messages) => (
-    {
-        type: SET_VALIDATION_MESSAGES,
-        payload: messages
-    }
-);
-export const clearValidationMessages = () => (
-    { type: CLEAR_VALIDATION_MESSAGES }
-);
+    };
+};
+export const setValidationMessages = messages => ({
+    type: SET_VALIDATION_MESSAGES,
+    payload: messages
+});
+export const clearValidationMessages = () => ({ type: CLEAR_VALIDATION_MESSAGES });

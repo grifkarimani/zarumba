@@ -4,12 +4,33 @@ import Player from "./Player/index.jsx";
 import GameStatistic from "./GameStatistic/index";
 import PlayersStatistic from "./PlayersStatistic/index";
 import Conditions from "../Conditions";
+import { setPlayerList } from "./Actions/actions";
 
 import img from "../../media/bull.svg";
 
 import { setBall, setBull, setWhite, setYellow, setRed, setLast, stratReverce, setAvers, setReverce, setGameOverMessage } from "./Actions/actions";
 
 class Game extends React.Component {
+    componentDidMount() {
+        console.log("componentDidMount");
+        let players = this.props.OptionsReducer.players.map(player => {
+            return {
+                id: player.id,
+                name: player.name,
+                position: Math.floor(Math.random() * 10001),
+                current: 0,
+                bull: 0,
+                totalWhites: 0,
+                totalReds: 0,
+                totalYellows: 0,
+                tottalBulls: 0
+            };
+        });
+        if (this.props.isRandom) {
+            players.sort((a, b) => a.position - b.position);
+        }
+        this.props.setPlayers(players);
+    }
     playersWithBulls(players) {
         let damages = [];
         players.forEach(player => {
@@ -22,7 +43,8 @@ class Game extends React.Component {
         return damages;
     }
     render() {
-        console.log(this.props);
+        console.log("Game PROPS", this.props);
+        if (!this.props.GameReducer.players) return null;
         const {
             AppReducer,
             OptionsReducer,
@@ -43,7 +65,6 @@ class Game extends React.Component {
 
         const { onlyYellow } = this.props.OptionsReducer;
         const { isReverce, players = [], results, totalBalls, totalBulls, whites, reds, yellows } = this.props.GameReducer;
-        console.log("GameReducer.players", players);
         const bulls = this.playersWithBulls(GameReducer.players);
         let whitesArr = new Array(15 - (GameReducer.whites > 15 ? 15 : GameReducer.whites)).fill(0);
         return (
@@ -200,6 +221,9 @@ const mapDispatchToProps = dispatch => {
         },
         gameOverMessage() {
             dispatch(setGameOverMessage());
+        },
+        setPlayers(list) {
+            dispatch(setPlayerList(list));
         }
     };
 };

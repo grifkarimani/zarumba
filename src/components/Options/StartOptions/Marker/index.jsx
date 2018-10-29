@@ -1,4 +1,5 @@
 import React from "react";
+import Select from "react-select";
 import { connect } from "react-redux";
 
 import { setMarker } from "../../Actions/actions";
@@ -18,16 +19,18 @@ class Marker extends React.Component {
     hidePlayerList() {
         this.setState({ playerListIsVisible: false });
     }
-    selectMarker(event) {
-        this.props.setMarkerName(event);
+    selectMarker(selectedOption) {
+        this.props.setMarkerName(selectedOption);
         this.hidePlayerList();
     }
     render() {
         const { markerName, setMarkerName, players } = this.props;
+        let members = players.map(it => it);
         return (
             <div className="css-marker">
                 <div className="css-marker-name">
-                    <input
+                    <Select value={markerName} onChange={this.selectMarker.bind(this)} placeholder="Маркёр..." options={members} />
+                    {/* <input
                         className="css-text-input"
                         type="text"
                         value={markerName}
@@ -44,7 +47,7 @@ class Marker extends React.Component {
                                 {it.name}
                             </option>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </div>
         );

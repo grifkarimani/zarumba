@@ -1,10 +1,14 @@
 import React from "react";
 import { connect } from "react-redux";
 import StartOption from "./Option/index";
+import _ from "lodash";
 
 import { setOption, redRedPoints, incRedPoints, redLastBallPrice, incLastBallPrice, redBallPrice, incBallPrice } from "../Actions/actions";
 
 class StartOptions extends React.Component {
+    TEMPselectOption(e) {
+        console.log(e.target);
+    }
     render() {
         const {
             withReverce,
@@ -16,6 +20,7 @@ class StartOptions extends React.Component {
             redPoints,
             lastBall,
             ballPrice,
+            options,
 
             selectOption,
             increaseRedPoints,
@@ -25,8 +30,28 @@ class StartOptions extends React.Component {
             reduceBallPrice,
             increaseBallPrice
         } = this.props;
+        let optionsArray = [];
+        _.forOwn(options, (value, key) => {
+            let option = options[key];
+            option.optionKey = key;
+            optionsArray.push(option);
+        });
+        console.log("optionsArray", optionsArray);
         return (
             <div className="css-start-options">
+                {optionsArray.map(option => (
+                    <StartOption
+                        key={option.id}
+                        optionWithSetContainer={!!option.setContainer}
+                        className={option.className}
+                        optionIsSelected={option.isSelected}
+                        optionKey={option.optionKey}
+                        selectOption={this.TEMPselectOption.bind(this)}
+                        option1={option.yes}
+                        option2={option.no}
+                    />
+                ))}
+
                 <StartOption
                     optionWithSetContainer={false}
                     className="Reverce"
@@ -113,12 +138,14 @@ const mapStateToProps = state => {
         lastBall: state.OptionsReducer.lastBall,
         ballPrice: state.OptionsReducer.ballPrice,
         lastBallByCost: state.OptionsReducer.lastBallByCost,
-        nominalBallPrice: state.OptionsReducer.nominalBallPrice
+        nominalBallPrice: state.OptionsReducer.nominalBallPrice,
+        options: state.OptionsReducer.options
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
         selectOption(key, value) {
+            console.log("pjbhnvgp;jnv;jsnd;fjvn;sdjfnv;jnsd;fjvnd;sojnfv;ojdsnfv");
             dispatch(setOption(key, value));
         },
         increaseRedPoints() {

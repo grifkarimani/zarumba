@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Redirect, Link } from "react-router-dom";
+// import { Redirect, Link } from "react-router-dom";
 import { getStartupData } from "./selectors";
 import { setPlayerList } from "../Game/Actions/actions";
 import Conditions from "../Conditions";
@@ -26,7 +26,7 @@ class CheckList extends React.Component {
         this.props.setPlayers(players);
     }
     render() {
-        const { players, handleBack } = this.props;
+        const { players } = this.props;
         return (
             <div className="css-checkList">
                 <div className="css-list">

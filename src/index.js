@@ -9,7 +9,6 @@ import { ConnectedRouter, routerMiddleware } from "react-router-redux";
 import App from "./components/App";
 import thunk from "redux-thunk";
 import reducers from "./reducers/reducers.js";
-// import reducers from "reducers";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 const history = createHistory();

@@ -17,27 +17,18 @@ class StartOption extends React.Component {
         ) : null;
     }
     render() {
-        const { className, mainLabel, optionIsSelected, selectOption, optionKey, option1, option2, optionWithSetContainer } = this.props;
+        const { className, optionIsSelected, selectOption, optionKey, option1, option2, optionWithSetContainer } = this.props;
         return (
             <div className={["css-start-option", className].join(" ")}>
                 <div className="css-start-option-content">
-                    <div
-                        className={["css-start-option-content-item left", optionIsSelected ? "selected" : ""].join(" ")}
-                        onClick={selectOption.bind(this, optionKey, true)}
-                    >
-                        {option1}
-                    </div>
                     <div className="css-switch">
-                        <label class="switch">
-                            <input type="checkbox" checked />
-                            <span class="slider round" />
+                        <label className="switch">
+                            <input type="checkbox" checked={optionIsSelected} onChange={selectOption.bind(this, optionKey, !optionIsSelected)} />
+                            <span className="slider round" />
                         </label>
                     </div>
-                    <div
-                        className={["css-start-option-content-item right", optionIsSelected ? "" : "selected"].join(" ")}
-                        onClick={selectOption.bind(this, optionKey, false)}
-                    >
-                        {option2}
+                    <div className={["css-start-option-content-item left", optionIsSelected ? "selected" : ""].join(" ")}>
+                        {optionIsSelected ? option1 : option2}
                     </div>
                     {optionWithSetContainer ? this.renderSetContainer() : null}
                 </div>

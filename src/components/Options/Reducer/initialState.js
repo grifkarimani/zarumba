@@ -1,17 +1,76 @@
+import uuidv4 from "uuid/v4";
+
 const initialState = {
     validationMessages: [],
-    withReverce: true,
-    payLoosers: true,
-    isRandom: true,
-    onlyYellow: true,
-    redPoints: 2,
-    yellowPoints: 1,
-    lastBall: 1,
-    lastBallByCost: true,
-    nominalBallPrice: true,
-    whiteBalls: 15,
-    ballPrice: 0.5,
     markerName: "",
+    options: {
+        reverse: {
+            id: uuidv4(),
+            isSelected: true,
+            className: "Reverce",
+            yes: "С реверсом",
+            no: "Без реверса"
+        },
+        payment: {
+            id: uuidv4(),
+            isSelected: true,
+            className: "Payment",
+            yes: "Свет платят минусовые",
+            no: "Свет на всех"
+        },
+        random: {
+            id: uuidv4(),
+            isSelected: true,
+            className: "Random",
+            yes: "Случайный порядок игроков",
+            no: "В порядке решистрации"
+        },
+        moneyBall: {
+            id: uuidv4(),
+            isSelected: true,
+            className: "onlyYellow",
+            yes: "Только желтый",
+            no: "С красным",
+            redPoints: 2,
+            yellowPoints: 1,
+            setContainer: {
+                label: "Красный за:",
+                step: 1
+            }
+        },
+        customLastBall: {
+            id: uuidv4(),
+            isSelected: false,
+            className: "lastBall",
+            lastBall: 1,
+            setContainer: {
+                label: "Последний за:",
+                step: 1
+            }
+        },
+        customBallPrice: {
+            id: uuidv4(),
+            isSelected: false,
+            className: "ballPrice",
+            lastBall: 1,
+            setContainer: {
+                label: "За шар:",
+                step: 0.5
+            }
+        }
+    },
+    // withReverce: true,
+    // payLoosers: true,
+    // isRandom: true,
+    // onlyYellow: true,
+    // redPoints: 2,
+    // yellowPoints: 1,
+    // lastBall: 1,
+    // lastBallByCost: true,
+    // nominalBallPrice: true,
+    whiteBalls: 15,
+    // ballPrice: 0.5,
+
     players: [
         {
             id: 1,
@@ -140,7 +199,6 @@ const initialState = {
     //         ]
     //     }
     // ]
-
 };
 
 export default initialState;
