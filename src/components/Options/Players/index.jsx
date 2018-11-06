@@ -6,7 +6,7 @@ import add from "../../../media/add.svg";
 import info from "../../../media/info.svg";
 // import Marker from "../StartOptions/Marker";
 
-import { addNewPlayer, removePlayer, setPlayerName, clearValidationMessages } from "../Actions/actions";
+import { addNewPlayer, removePlayer, setPlayerName } from "../Actions/actions";
 
 class Players extends React.Component {
     render() {
@@ -84,9 +84,6 @@ const mapDispatchToProps = dispatch => {
         },
         setName(event) {
             dispatch(setPlayerName(event));
-        },
-        clearValidation() {
-            dispatch(clearValidationMessages());
         }
     };
 };

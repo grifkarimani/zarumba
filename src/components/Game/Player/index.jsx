@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import Overlay from "../../Overlay";
-import img from "../../../media/bull.svg";
+// import img from "../../../media/bull.svg";
 
 class Player extends React.Component {
     constructor(props) {
@@ -15,6 +15,10 @@ class Player extends React.Component {
         this.lastWhite = this.lastWhite.bind(this);
         this.lastRed = this.lastRed.bind(this);
         this.stratReverce = this.stratReverce.bind(this);
+        this.clg = this.clg.bind(this);
+    }
+    clg() {
+        console.log("CLG");
     }
     getClass() {
         const { current } = this.props;
@@ -46,11 +50,12 @@ class Player extends React.Component {
         }
     }
     handleWhiteBall() {
-        const { whites, handleWhiteBall } = this.props;
-        if (whites == 14) {
-            this.setState({ isOverlayLast: true });
-        }
-        handleWhiteBall(this.getOptionsFor("white"));
+        const { handleWhiteBall } = this.props;
+        Promise.resolve(handleWhiteBall(this.getOptionsFor("white"))).then(() => {
+            if (this.props.whiteBalls <= 0) {
+                this.setState({ isOverlayLast: true });
+            }
+        });
     }
     handleLastBall() {
         const { handleLastBall } = this.props;
@@ -60,18 +65,22 @@ class Player extends React.Component {
         this.setState({ isOverlayRed: true });
     }
     lastWhite(isYellowDroped) {
-        const { handleYellowBall, onlyYellow, withReverce, isReverce, saveAvers, gameOverMessage, saveReverce } = this.props;
+        const { handleYellowBall, moneyBall, reverse, isReverce, saveAvers, gameOverMessage, saveReverce } = this.props;
+        let onlyYellow = !moneyBall.isSelected;
+        let withReverce = reverse.isSelected;
         if (isYellowDroped) handleYellowBall(this.getOptionsFor("yellow"));
         if (onlyYellow) {
             this.setState({ isOverlayLast: false });
+
             if (withReverce) {
-                if (!isReverce) {
-                    this.setState({ reverceOverlay: true });
-                    saveAvers();
-                } else {
+                debugger;
+                if (isReverce) {
                     this.setState({ gameOver: true });
                     gameOverMessage();
                     saveReverce();
+                } else {
+                    this.setState({ reverceOverlay: true });
+                    saveAvers();
                 }
             } else {
                 saveAvers();
@@ -116,20 +125,34 @@ class Player extends React.Component {
     }
     render() {
         const {
+            id,
             name,
             current,
-            ballPrice,
-            onlyYellow,
+            customBallPrice,
+            lastBall,
+            moneyBall,
+            payment,
+            random,
+            reverse,
+            isReverce,
+            whites,
+            yellows,
+            reds,
             nominalBallPrice,
-            isWhitesAre,
-            withReverce,
             handleYellowBall,
             handleRedBall,
             handleBull,
-            setPage
+            setPage,
+            whiteBalls
         } = this.props;
+        let withMoneyBall = moneyBall.isSelected;
+        let isWhitesAre = whiteBalls > 0;
+        let withReverce = reverse.isSelected;
+        if (!name) {
+            return null;
+        }
         return (
-            <div className={["css-player", this.getClass()].join(" ")}>
+            <div className={["css-player", this.getClass()].join(" ")} id={id}>
                 {this.state.isOverlayLast ? (
                     <Overlay
                         message="Был сыгран последний белый."
@@ -140,14 +163,13 @@ class Player extends React.Component {
                         abortButtonHendler={this.lastWhite}
                     />
                 ) : null}
-                {this.state.isOverlayRed ? (
+                {this.state.gameOver ? (
                     <Overlay
-                        message="Был забит последний шар (красный)."
-                        guestion="Биток упал?"
-                        confirmButtonLabel="Да"
-                        confirmButtonHendler={this.lastRed}
-                        abortButtonLabel="Нет"
-                        abortButtonHendler={this.lastRed}
+                        message="Конец игры."
+                        confirmButtonLabel="Показать Статистику"
+                        confirmButtonHendler={this.clg}
+                        page="Results"
+                        overlayKey="gameOver"
                     />
                 ) : null}
                 {this.state.reverceOverlay && withReverce ? (
@@ -159,10 +181,6 @@ class Player extends React.Component {
                         abortButtonHendler={this.stratReverce}
                     />
                 ) : null}
-                {this.state.gameOver ? (
-                    <Overlay message="Конец игры." confirmButtonLabel="Показать Статистику" confirmButtonHendler={setPage} page="Results" />
-                ) : null}
-
                 <div className="css-player-bar">
                     <div className="css-name">{`${name}:`}</div>
                     <div className={["css-current"].join(" ")}>{current}</div>
@@ -171,9 +189,7 @@ class Player extends React.Component {
                             className={["css-button", isWhitesAre ? "" : "dis"].join(" ")}
                             onClick={this.handleWhiteBall.bind(this)}
                             disabled={!isWhitesAre}
-                        >
-                            +
-                        </button>
+                        />
                     </div>
 
                     <div className="css-add">
@@ -181,27 +197,24 @@ class Player extends React.Component {
                             className={["css-button", isWhitesAre ? "" : "dis"].join(" ")}
                             onClick={handleYellowBall.bind(this, this.getOptionsFor("yellow"))}
                             disabled={!isWhitesAre}
-                        >
-                            +
-                        </button>
+                        />
                     </div>
-                    {!onlyYellow ? (
+                    {withMoneyBall ? (
                         <div className="css-double">
-                            <button className="css-button" onClick={handleRedBall.bind(this, this.getOptionsFor("red"))}>
-                                +
-                            </button>
+                            <button className="css-button" onClick={handleRedBall.bind(this, this.getOptionsFor("red"))} />
                         </div>
                     ) : null}
                     <div className="css-bull-button">
                         <button
-                            className={["css-button", isWhitesAre ? "" : onlyYellow ? "" : "dis"].join(" ")}
+                            className={["css-button", isWhitesAre ? "" : withMoneyBall ? "" : "dis"].join(" ")}
                             onClick={handleBull.bind(this, this.getOptionsFor("bull"))}
-                            disabled={onlyYellow ? false : !isWhitesAre}
+                            disabled={withMoneyBall ? false : !isWhitesAre}
                         >
-                            <img className="css-bull-icon" src={img} alt="" />
+                            {/* <img className="css-bull-icon" src={img} alt="" /> */}
+                            BULL
                         </button>
                     </div>
-                    {!onlyYellow &&
+                    {!withMoneyBall &&
                         !isWhitesAre && (
                             <div className="css-last">
                                 <button className="css-button" onClick={this.handleItWasLast.bind(this)}>
@@ -210,23 +223,27 @@ class Player extends React.Component {
                             </div>
                         )}
                 </div>
-                {!nominalBallPrice ? <div className="css-price">{current * ballPrice}</div> : null}
+                {nominalBallPrice ? <div className="css-price">{current * customBallPrice.optionValue}</div> : null}
             </div>
         );
     }
 }
 const mapStateToProps = state => {
     const { OptionsReducer, GameReducer } = state;
+    console.log("OptionsReducer", OptionsReducer);
+    console.log("GameReducer", GameReducer);
     return {
-        ballPrice: OptionsReducer.ballPrice,
+        customBallPrice: OptionsReducer.options.customBallPrice,
+        lastBall: OptionsReducer.options.lastBall,
+        moneyBall: OptionsReducer.options.moneyBall,
+        payment: OptionsReducer.options.payment,
+        random: OptionsReducer.options.random,
+        reverse: OptionsReducer.options.reverse,
         isReverce: GameReducer.isReverce,
-        lastBall: OptionsReducer.lastBall,
-        nominalBallPrice: OptionsReducer.nominalBallPrice,
-        onlyYellow: OptionsReducer.onlyYellow,
-        withReverce: OptionsReducer.withReverce,
-        redPoints: OptionsReducer.redPoints,
         whites: GameReducer.whites,
-        lastBallByCost: OptionsReducer.lastBallByCost
+        yellows: GameReducer.yellows,
+        reds: GameReducer.reds,
+        whiteBalls: GameReducer.whiteBalls
     };
 };
 export default connect(mapStateToProps)(Player);

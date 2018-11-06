@@ -1,29 +1,12 @@
-// import {ADD_PLAYER, DELETE_PLAYER} from "./actionTypes";
-// import {createActions} from "redux-actions";
-
-// export const { addPlayer, deletePlayer} = createActions({
-//     ADD_PLAYER,
-//     DELETE_PLAYER
-// });
-
-import {
-    ADD_PLAYER,
-    DELETE_PLAYER,
-    SET_NAME,
-    SELECT_OPTION,
-    SET_PRICE,
-    SET_STORE_VALUE,
-    SET_MARKER,
-    REDUCE_REDPOINTS,
-    INCREACE_REDPOINTS,
-    INCREACE_LASTBALLPRICE,
-    REDUCE_LASTBALLPRICE,
-    INCREACE_BALLPRICE,
-    REDUCE_BALLPRICE,
-    SET_VALIDATION_MESSAGES,
-    CLEAR_VALIDATION_MESSAGES
-} from "./actionTypes";
-
+import { ADD_PLAYER, DELETE_PLAYER, SET_NAME, SELECT_OPTION, SET_MARKER, INCREACE_VALUE, REDUCE_VALUE } from "./actionTypes";
+export const increase = key => ({
+    type: INCREACE_VALUE,
+    payload: key
+});
+export const reduce = key => ({
+    type: REDUCE_VALUE,
+    payload: key
+});
 export const addNewPlayer = () => ({
     type: ADD_PLAYER,
     payload: {
@@ -51,24 +34,6 @@ export const setOption = (key, value) => ({
     }
 });
 
-export const setBallPrice = event => {
-    let value = 1 * event.target.value;
-
-    return {
-        type: SET_PRICE,
-        payload: value
-    };
-};
-export const setStoreValue = (key, event) => {
-    const value = 1 * event.target.value;
-    return {
-        type: SET_STORE_VALUE,
-        payload: {
-            key: key,
-            value: value
-        }
-    };
-};
 export const setMarker = name => {
     let value = name;
     return {
@@ -76,39 +41,3 @@ export const setMarker = name => {
         payload: value
     };
 };
-export const redRedPoints = () => {
-    return {
-        type: REDUCE_REDPOINTS
-    };
-};
-export const incRedPoints = () => {
-    return {
-        type: INCREACE_REDPOINTS
-    };
-};
-export const incLastBallPrice = () => {
-    return {
-        type: INCREACE_LASTBALLPRICE
-    };
-};
-export const redLastBallPrice = () => {
-    return {
-        type: REDUCE_LASTBALLPRICE
-    };
-};
-
-export const incBallPrice = () => {
-    return {
-        type: INCREACE_BALLPRICE
-    };
-};
-export const redBallPrice = () => {
-    return {
-        type: REDUCE_BALLPRICE
-    };
-};
-export const setValidationMessages = messages => ({
-    type: SET_VALIDATION_MESSAGES,
-    payload: messages
-});
-export const clearValidationMessages = () => ({ type: CLEAR_VALIDATION_MESSAGES });

@@ -1,14 +1,13 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Players from "./Players/index";
 import StartOptions from "./StartOptions/index";
-
-import { setValidationMessages } from "./Actions/actions";
 
 class Options extends React.Component {
     constructor(props) {
         super(props);
+        this.state = { startIsVisible: false };
         this.validateNames = this.validateNames.bind(this);
     }
 
@@ -17,16 +16,17 @@ class Options extends React.Component {
         const messages = [];
         players.forEach(player => {
             if (player.name === "") messages.push("Имя не может быть пустым");
-            if (player.name !== "" && player.name.length < 3) messages.push("Имя должно содержать минимум 3 символа");
         });
         return [...new Set(messages)];
     }
-    handleClick() {
-        console.log("handleClickobject");
+    handleStart(e) {
+        e.preventDefault();
+        if (!this.validateNames().length) {
+            this.props.history.push("/game");
+        }
     }
     render() {
         const { clearValidation } = this.props;
-
         return (
             <div className="css-options">
                 <div className="css-content">
@@ -39,10 +39,11 @@ class Options extends React.Component {
                         </div>
                     </div>
                 </div>
+
                 <div className="css-controls">
-                    <button className="css-button">
-                        <Link to="/game">Старт</Link>
-                    </button>
+                    <Link to="/game" className="css-button" onClick={this.handleStart.bind(this)}>
+                        Старт
+                    </Link>
                 </div>
             </div>
         );
@@ -50,12 +51,8 @@ class Options extends React.Component {
 }
 
 const mapStateToProps = state => state.OptionsReducer;
-const mapDispatchToProps = dispatch => ({
-    setValidation(validationMessages) {
-        dispatch(setValidationMessages(validationMessages));
-    }
-});
+const mapDispatchToProps = dispatch => ({});
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(Options);
+)(withRouter(Options));

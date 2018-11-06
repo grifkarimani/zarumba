@@ -1,34 +1,42 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Route, Switch } from "react-router";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
 import Rules from "../Rules/index.jsx";
 import Options from "../Options/index.jsx";
 import Game from "../Game/index.jsx";
 import Header from "./Header/index";
 import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
+import LoginForm from "../LoginForm/index";
 
 class App extends React.Component {
     render() {
+        let loggedIn = this.props.loggedIn;
         return (
             <div className="css-app">
                 <Header />
                 <LeftBar />
-                <div className="css-main-area">
-                    <Switch>
-                        <Route exact path="/" component={Rules} />
-                        <Route exact path="/options" component={Options} />
-                        <Route exact path="/game" component={Game} />
-                        <Route exact path="/results" component={Results} />
-                    </Switch>
-                </div>
+                <Router>
+                    <div className="css-main-area">
+                        <Switch>
+                            <Route exact path="/" render={() => (loggedIn ? <Rules /> : <Redirect to="/login" />)} />
+                            <Route exact path="/login" component={LoginForm} />
+                            <Route exact path="/rules" component={Rules} />
+                            <Route exact path="/options" component={Options} />
+                            <Route exact path="/game" component={Game} />
+                            <Route exact path="/results" component={Results} />
+                        </Switch>
+                    </div>
+                </Router>
             </div>
         );
     }
 }
 
 const mapStateToProps = state => {
-    return state;
+    return {
+        loggedIn: state.AppReducer.loggedIn
+    };
 };
 
 const mapDispatchToProps = dispatch => {

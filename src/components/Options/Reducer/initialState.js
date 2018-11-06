@@ -6,55 +6,62 @@ const initialState = {
     options: {
         reverse: {
             id: uuidv4(),
-            isSelected: true,
+            mainLabel: "Реверс:",
+            isSelected: false,
             className: "Reverce",
-            yes: "С реверсом",
-            no: "Без реверса"
+            yes: "Аверс + Реверс",
+            no: "Аверс"
         },
         payment: {
             id: uuidv4(),
-            isSelected: true,
+            mainLabel: "Оплата света:",
+            isSelected: false,
             className: "Payment",
-            yes: "Свет платят минусовые",
-            no: "Свет на всех"
+            yes: "Минусовые",
+            no: "На всех"
         },
         random: {
             id: uuidv4(),
-            isSelected: true,
+            mainLabel: "Очередность игроков:",
+            isSelected: false,
             className: "Random",
-            yes: "Случайный порядок игроков",
-            no: "В порядке решистрации"
+            yes: "Случайный порядок",
+            no: "По регистрации"
         },
         moneyBall: {
             id: uuidv4(),
-            isSelected: true,
+            mainLabel: "Бонусный шар:",
+            isSelected: false,
             className: "onlyYellow",
-            yes: "Только желтый",
-            no: "С красным",
-            redPoints: 2,
+            yes: "Бонусный за:",
+            no: "Нет",
+            optionValue: 2,
             yellowPoints: 1,
             setContainer: {
-                label: "Красный за:",
                 step: 1
             }
         },
-        customLastBall: {
+        lastBall: {
             id: uuidv4(),
+            mainLabel: "Последний шар:",
             isSelected: false,
             className: "lastBall",
-            lastBall: 1,
+            yes: "Последний за:",
+            no: "Номинал",
+            optionValue: 1,
             setContainer: {
-                label: "Последний за:",
                 step: 1
             }
         },
         customBallPrice: {
             id: uuidv4(),
+            mainLabel: "Цена шара:",
             isSelected: false,
             className: "ballPrice",
-            lastBall: 1,
+            yes: "За шар:",
+            no: "Игра на очки",
+            optionValue: 1,
             setContainer: {
-                label: "За шар:",
                 step: 0.5
             }
         }

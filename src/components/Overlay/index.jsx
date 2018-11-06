@@ -1,9 +1,7 @@
 import React from "react";
+import { Link, withRouter } from "react-router-dom";
 
 class Overlay extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     render() {
         const {
             message = "",
@@ -12,7 +10,8 @@ class Overlay extends React.Component {
             confirmButtonLabel,
             confirmButtonHendler,
             abortButtonLabel,
-            abortButtonHendler
+            abortButtonHendler,
+            overlayKey
         } = this.props;
         return (
             <div className="css-overlay-container">
@@ -21,22 +20,17 @@ class Overlay extends React.Component {
                     <div className="css-over-title">{message}</div>
                     <div className="css-over-title">{guestion}</div>
                     <div className="css-over-controls">
-                        {confirmButtonLabel && (
-                            <button
-                                className="css-button"
-                                onClick={confirmButtonHendler.bind(
-                                    this,
-                                    page ? page : true
-                                )}
-                            >
+                        {overlayKey === "gameOver" ? (
+                            <Link to="/results" className="css-button">
+                                {confirmButtonLabel}
+                            </Link>
+                        ) : (
+                            <button className="css-button" onClick={confirmButtonHendler.bind(this, true)}>
                                 {confirmButtonLabel}
                             </button>
                         )}
-                        {abortButtonLabel && (
-                            <button
-                                className="css-button"
-                                onClick={abortButtonHendler.bind(this, false)}
-                            >
+                        {abortButtonHendler && (
+                            <button className="css-button" onClick={abortButtonHendler.bind(this, false)}>
                                 {abortButtonLabel}
                             </button>
                         )}

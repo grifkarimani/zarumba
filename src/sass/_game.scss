@@ -3,11 +3,9 @@
 @import "_gameinfo";
 
 .css-game {
-    padding: 0 60px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% - 135px);
     .css-total-whites {
         display: grid;
         grid-template-columns: 20% 20% 20% 20% 20%;
@@ -25,9 +23,6 @@
     }
 
     .css-body {
-        height: 80%;
-        display: flex;
-        justify-content: space-between;
         .css-left-bar {
             width: 16%;
             border-right: 1px solid $_mainBorderColor;
@@ -50,7 +45,7 @@
             }
         }
         .css-center-block {
-            width: 58%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: space-between;

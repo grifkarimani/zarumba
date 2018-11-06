@@ -10,9 +10,13 @@
         flex-direction: column;
         .css-options-wrapper {
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
+            height: 100%;
             .css-players-list {
-                flex-grow: 1;
+                width: 30%;
+                border-right: 1px solid grey;
+                padding: 30px;
+                box-sizing: border-box;
                 .css-players {
                     display: flex;
                     flex-direction: column;
@@ -24,88 +28,10 @@
                 }
             }
             .css-start-options-list {
-                flex-grow: 2;
-            }
-        }
-        .css-checkList {
-            .css-list {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
-                .css-body {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-
-                    .css-players {
-                        font-size: 22px;
-                        width: 100%;
-                        display: flex;
-                        padding-bottom: 16px;
-                        border-bottom: 1px solid $_mainBorderColor;
-                        margin-bottom: 20px;
-                        .css-title {
-                            display: flex;
-                            justify-content: space-between;
-                            flex-basis: 24%;
-                            margin-right: 44px;
-                        }
-                        .css-num {
-                            font-size: 52px;
-                            color: #fff;
-                            height: 60px;
-                            width: 60px;
-                            background-color: #ff8f2f;
-                            border-radius: 50%;
-                            text-align: center;
-                            margin-right: 16px;
-                            padding: 24px;
-                        }
-                        .css-play {
-                            display: inline-block;
-                        }
-                        .css-items {
-                            padding: 0;
-                            .css-item {
-                                margin-bottom: 6px;
-                            }
-                        }
-                    }
-                    .css-start-options {
-                        font-size: 22px;
-                        width: 100%;
-                        display: flex;
-                        padding-bottom: 16px;
-                        border-bottom: 1px solid $_mainBorderColor;
-                        margin-bottom: 20px;
-                        .css-title {
-                            color: $_orangeText;
-                            flex-basis: 24%;
-                            margin-right: 44px;
-                            font-size: 30px;
-                        }
-                        .css-items {
-                            .css-item {
-                                margin-bottom: 6px;
-                            }
-                        }
-                    }
-                }
-                .css-footer {
-                    padding: 0 40px 40px 40px;
-                    .css-footer-controls {
-                        display: flex;
-                        justify-content: space-between;
-                        .css-button {
-                            width: 54px;
-                            text-align: center;
-                            box-shadow: none;
-                            &:hover {
-                                box-shadow: $_shadow;
-                            }
-                        }
-                    }
-                }
+                width: 68%;
+                border-left: 1px solid grey;
+                padding: 30px;
+                box-sizing: border-box;
             }
         }
     }
@@ -119,25 +45,19 @@
             // display: flex;
             // justify-content: space-around;
             .css-start-option {
-                display: flex;
-                justify-content: space-between;
+                // display: flex;
+                // justify-content: space-between;
                 margin-bottom: 12px;
                 .css-start-option-label {
-                    width: 40%;
+                    width: 150px;
+                    min-width: 120px;
                 }
                 .css-start-option-content {
                     width: 100%;
                     display: flex;
                     align-items: center;
                     .css-set-container {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 8px;
-                        .css-set-container-label {
-                            margin-bottom: 0;
-                            width: 60%;
-                        }
+                        width: 40%;
                         .css-set-container-controls {
                             display: flex;
                             justify-content: space-between;
@@ -148,7 +68,7 @@
                     .css-start-option-content-item {
                         font-size: 18px;
                         display: inline-block;
-                        width: 260px;
+                        width: 200px;
                         text-align: center;
                         cursor: pointer;
                         transition: 0.5s;
@@ -165,6 +85,7 @@
                     .css-switch {
                         min-width: 80px;
                         text-align: center;
+                        margin-right: 20px;
                     }
                 }
                 .css-controll-button {

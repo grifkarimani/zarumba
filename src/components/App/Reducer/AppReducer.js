@@ -1,4 +1,4 @@
-const initialState = {};
+const initialState = { loggedIn: false };
 
 const app = (state = initialState, action) => {
     // switch (action.type) {

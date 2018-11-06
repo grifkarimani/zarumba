@@ -12,7 +12,6 @@ import { setBall, setBull, setWhite, setYellow, setRed, setLast, stratReverce, s
 
 class Game extends React.Component {
     componentDidMount() {
-        console.log("componentDidMount");
         let players = this.props.OptionsReducer.players.map(player => {
             return {
                 id: player.id,
@@ -43,10 +42,8 @@ class Game extends React.Component {
         return damages;
     }
     render() {
-        console.log("Game PROPS", this.props);
         if (!this.props.GameReducer.players) return null;
         const {
-            AppReducer,
             OptionsReducer,
             GameReducer,
 
@@ -70,7 +67,7 @@ class Game extends React.Component {
         return (
             <div className="css-game">
                 <div className="css-body">
-                    <div className="css-left-bar">
+                    {/* <div className="css-leftSide-bar" style={{ border: "1px solid green" }}>
                         <div className="css-info">
                             <Conditions />
                         </div>
@@ -82,8 +79,8 @@ class Game extends React.Component {
                             </div>
                         )}
                         <div className="css-timer" />
-                    </div>
-                    <div className="css-center-block">
+                    </div> */}
+                    <div className="css-center-block" style={{ border: "1px solid red" }}>
                         <div className="css-main">
                             <div className="css-players-grid">
                                 {GameReducer.players.map(player => {
@@ -121,7 +118,7 @@ class Game extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="css-right-bar">
+                    <div className="css-right-bar" style={{ display: "none" }}>
                         <div className="css-statistic">
                             {/* <GameStatistic /> */}
                             {isReverce ? (
