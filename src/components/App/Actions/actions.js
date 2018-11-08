@@ -1,8 +1,5 @@
-// import { SET_PAGE } from './actionTypes'
+import { MODE_ACCEPT } from "./actionTypes";
 
-// export const setNewPage = (newPage) => (
-//     {
-//         type: SET_PAGE,
-//         payload: newPage
-//     }
-// );
+export const modeAccept = () => ({
+    type: MODE_ACCEPT
+});

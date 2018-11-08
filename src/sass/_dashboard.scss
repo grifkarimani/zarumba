@@ -1,0 +1,53 @@
+.css-dashboard {
+    padding: 40px;
+    display: flex;
+    justify-content: space-around;
+    .dashboard-panel {
+        flex-basis: 40%;
+        .css-info {
+            height: 300px;
+            .header {
+                text-decoration: underline;
+            }
+            .content {
+                line-height: 1.3em;
+            }
+        }
+        .css-controls {
+            display: flex;
+            height: 100px;
+            .css-link {
+                color: #8a8a8a;
+                text-decoration: none;
+            }
+            .css-button {
+                width: 200px;
+                text-decoration: none;
+                text-align: center;
+                &.disabled {
+                    color: #d2d2d2;
+                    &:hover {
+                        box-shadow: none;
+                        cursor: default;
+                    }
+                }
+            }
+        }
+        &.left {
+            .css-controls {
+                flex-direction: column;
+                justify-content: space-between;
+                .css-button {
+                    width: 100%;
+                    // margin-top: 12px;
+                }
+            }
+        }
+        &.right {
+            .css-controls {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+    }
+}

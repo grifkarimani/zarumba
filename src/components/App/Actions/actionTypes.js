@@ -1,1 +1,1 @@
-// export const SET_PAGE = 'SET_PAGE';
+export const MODE_ACCEPT = "MODE_ACCEPT";

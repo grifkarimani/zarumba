@@ -8,6 +8,7 @@ import Header from "./Header/index";
 import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
 import LoginForm from "../LoginForm/index";
+import DashBoard from "../DashBoard/index";
 
 class App extends React.Component {
     render() {
@@ -19,8 +20,9 @@ class App extends React.Component {
                 <Router>
                     <div className="css-main-area">
                         <Switch>
-                            <Route exact path="/" render={() => (loggedIn ? <Rules /> : <Redirect to="/login" />)} />
+                            <Route exact path="/" render={() => (loggedIn ? <Rules /> : <Redirect to="/dashboard" />)} />
                             <Route exact path="/login" component={LoginForm} />
+                            <Route exact path="/dashboard" component={DashBoard} />
                             <Route exact path="/rules" component={Rules} />
                             <Route exact path="/options" component={Options} />
                             <Route exact path="/game" component={Game} />
