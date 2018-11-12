@@ -8,6 +8,8 @@ import Header from "./Header/index";
 import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
 import LoginForm from "../LoginForm/index";
+import Registration from "../Registration/index";
+
 import DashBoard from "../DashBoard/index";
 
 class App extends React.Component {
@@ -22,6 +24,7 @@ class App extends React.Component {
                         <Switch>
                             <Route exact path="/" render={() => (loggedIn ? <Rules /> : <Redirect to="/dashboard" />)} />
                             <Route exact path="/login" component={LoginForm} />
+                            <Route exact path="/registration" component={Registration} />
                             <Route exact path="/dashboard" component={DashBoard} />
                             <Route exact path="/rules" component={Rules} />
                             <Route exact path="/options" component={Options} />

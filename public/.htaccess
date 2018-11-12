@@ -1,0 +1,9 @@
+AddType application/x-httpd-php .php .htm .html
+RewriteEngine On
+#RewriteBase /
+#RewriteCond %{REQUEST_URI} !^/static
+#RewriteCond %{REQUEST_URI} !^/php
+#RewriteCond %{REQUEST_URI} !^/enter
+#RewriteCond %{REQUEST_URI} !^/favicon.ico
+#RewriteCond %{REQUEST_URI} !^/manifest.json
+#RewriteRule ^(.*)$ index.html [L,QSA]

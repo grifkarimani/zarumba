@@ -145,12 +145,14 @@ class Player extends React.Component {
             setPage,
             whiteBalls
         } = this.props;
+        console.log("Player PROPS", this.props);
         let withMoneyBall = moneyBall.isSelected;
         let isWhitesAre = whiteBalls > 0;
         let withReverce = reverse.isSelected;
         if (!name) {
             return null;
         }
+        console.log("RED", this.getOptionsFor("red"));
         return (
             <div className={["css-player", this.getClass()].join(" ")} id={id}>
                 {this.state.isOverlayLast ? (
@@ -199,6 +201,7 @@ class Player extends React.Component {
                             disabled={!isWhitesAre}
                         />
                     </div>
+
                     {withMoneyBall ? (
                         <div className="css-double">
                             <button className="css-button" onClick={handleRedBall.bind(this, this.getOptionsFor("red"))} />
@@ -210,18 +213,16 @@ class Player extends React.Component {
                             onClick={handleBull.bind(this, this.getOptionsFor("bull"))}
                             disabled={withMoneyBall ? false : !isWhitesAre}
                         >
-                            {/* <img className="css-bull-icon" src={img} alt="" /> */}
-                            BULL
+                            {/* <img className="css-bull-icon" src={img} alt="" /> */}Ш
                         </button>
                     </div>
-                    {!withMoneyBall &&
-                        !isWhitesAre && (
-                            <div className="css-last">
-                                <button className="css-button" onClick={this.handleItWasLast.bind(this)}>
-                                    Закончил
-                                </button>
-                            </div>
-                        )}
+                    {!withMoneyBall && !isWhitesAre && (
+                        <div className="css-last">
+                            <button className="css-button" onClick={this.handleItWasLast.bind(this)}>
+                                Закончил
+                            </button>
+                        </div>
+                    )}
                 </div>
                 {nominalBallPrice ? <div className="css-price">{current * customBallPrice.optionValue}</div> : null}
             </div>
