@@ -2,14 +2,14 @@
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+        <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" /> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="theme-color" content="#000000" />
         <!--
             manifest.json provides metadata used when your web app is added to the
             homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
         -->
-        <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+        <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
         <!--
             Notice the use of %PUBLIC_URL% in the tags above.
             It will be replaced with the URL of the `public` folder during the build.
@@ -23,16 +23,54 @@
     </head>
     <body>
         <noscript> You need to enable JavaScript to run this app. </noscript>
+
+        <!--
+            <script>
+                console.log(777);
+                let data = { name: "sdc", email: "sdc", pass: "sdc", confirmPass: "sdc" };
+                let url = "../../main.php";
+                let xhr = new XMLHttpRequest();
+                xhr.open("POST", url, false);
+                xhr.setRequestHeader("Content-Type", "application/json");
+                xhr.onload = () => {
+                    console.log(xhr);
+                    if (xhr.status === 200) {
+                        console.log("xhr.responseText", xhr.responseText);
+                    } else {
+                        console.log("status", xhr.status);
+                        console.log("statusText", xhr.statusText);
+                    }
+                };
+                xhr.send(JSON.stringify(data));
+            </script>
+        -->
+
         <div id="root"></div>
         <!--
-            This HTML file is a template.
-            If you open it directly in the browser, you will see an empty page.
-
-            You can add webfonts, meta tags, or analytics to this file.
-            The build step will place the bundled scripts into the <body> tag.
-
-            To begin the development, run `npm start` or `yarn start`.
-            To create a production bundle, use `npm run build` or `yarn build`.
+            <script type="text/javascript" src="/static/js/bundle.js"></script>
+            <script type="text/javascript" src="/public/enter.js"></script>
         -->
+
+        <script>
+            window.onload = function() {
+                var elem = document.querySelector("body > script");
+                elem.parentNode.removeChild(elem);
+
+                var e = document.createElement("script");
+                e.src = "http://localhost:3000/static/js/bundle.js";
+                e.type = "text/javascript";
+                document.querySelector("body").appendChild(e);
+
+                var e2 = document.createElement("script");
+                e2.src = "http://localhost:3000/static/js/1.chunk.js";
+                e2.type = "text/javascript";
+                document.querySelector("body").appendChild(e2);
+
+                var e3 = document.createElement("script");
+                e3.src = "http://localhost:3000/static/js/main.chunk.js";
+                e3.type = "text/javascript";
+                document.querySelector("body").appendChild(e3);
+            };
+        </script>
     </body>
 </html>

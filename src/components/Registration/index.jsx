@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { onSetValue } from "./Actions/actions.js";
+import $ from "jquery";
 
 class Registration extends Component {
     constructor(props) {
@@ -17,24 +18,39 @@ class Registration extends Component {
         e.preventDefault();
         let data = this.props.newUserData;
         if (data.pass === data.confirmPass) {
-            let url = "../../main.php";
+            let url = "./main.php";
+
+            // $.ajax({
+            //     type: "POST",
+            //     url: url,
+            //     data: data,
+            //     success: function(a) {
+            //         console.log(a);
+            //     },
+            //     error: function(b) {
+            //         console.log(b);
+            //     }
+            // });
+
             let xhr = new XMLHttpRequest();
             xhr.open("POST", url, false);
-            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             xhr.onload = () => {
                 console.log(xhr);
                 if (xhr.status === 200) {
                     console.log("xhr.responseText", xhr.responseText);
+                    // console.log(JSON.parse(xhr.responseText));
                 } else {
                     console.log("status", xhr.status);
                     console.log("statusText", xhr.statusText);
                 }
             };
-            xhr.send(JSON.stringify(data));
+            console.log("JSON.stringify(data)", "data=" + JSON.stringify(data));
+            xhr.send("data=" + JSON.stringify(data));
         }
     }
     render() {
-        const {} = this.props;
+        // const {} = this.props;
         const { serverMess = "" } = this.props;
         return (
             <div className="css-registration">

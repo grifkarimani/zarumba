@@ -1,5 +1,5 @@
-AddType application/x-httpd-php .php .htm .html
-RewriteEngine On
+#AddType application/x-httpd-php .php .htm .html
+#RewriteEngine On
 #RewriteBase /
 #RewriteCond %{REQUEST_URI} !^/static
 #RewriteCond %{REQUEST_URI} !^/php
