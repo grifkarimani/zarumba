@@ -8,6 +8,8 @@
 @import "_rules.scss";
 @import "_dashboard.scss";
 @import "../components/Registration/registration";
+@import "../components/LoginForm/login";
+@import "../components/PassRecoveryPage/recovery";
 body {
     margin: 0;
     padding: 0;

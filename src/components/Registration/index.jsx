@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { onSetValue } from "./Actions/actions.js";
-import $ from "jquery";
 
 class Registration extends Component {
     constructor(props) {
         super(props);
-        this.stat = {};
+        this.state = {};
         this.onSubmit = this.onSubmit.bind(this);
     }
     handleChange(key, e) {
@@ -19,24 +18,10 @@ class Registration extends Component {
         let data = this.props.newUserData;
         if (data.pass === data.confirmPass) {
             let url = "./main.php";
-
-            // $.ajax({
-            //     type: "POST",
-            //     url: url,
-            //     data: data,
-            //     success: function(a) {
-            //         console.log(a);
-            //     },
-            //     error: function(b) {
-            //         console.log(b);
-            //     }
-            // });
-
             let xhr = new XMLHttpRequest();
             xhr.open("POST", url, false);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             xhr.onload = () => {
-                console.log(xhr);
                 if (xhr.status === 200) {
                     console.log("xhr.responseText", xhr.responseText);
                     // console.log(JSON.parse(xhr.responseText));
@@ -50,24 +35,47 @@ class Registration extends Component {
         }
     }
     render() {
-        // const {} = this.props;
-        const { serverMess = "" } = this.props;
+        const { serverMess = "sdfvsdfvvsdfvvdfv cascasdc casdcasasdc casc casdcasdc dcrcdcsybda bgs vbasfd vgsdf v", newUserData } = this.props;
         return (
             <div className="css-registration">
+                {serverMess && <div className="server-mess">{serverMess}</div>}
                 <form className="css-registration-form" action="">
-                    <input className="css-text-input" type="text" placeholder="*Имя..." onChange={this.handleChange.bind(this, "name")} />
-                    <input className="css-text-input" type="email" placeholder="*мояпочта@почта.бай..." onChange={this.handleChange.bind(this, "email")} />
-                    <input className="css-text-input" type="password" placeholder="*Пароль..." onChange={this.handleChange.bind(this, "pass")} />
-                    <input className="css-text-input" type="password" placeholder="*Еще раз пароль..." onChange={this.handleChange.bind(this, "confirmPass")} />
+                    <input
+                        className="css-text-input"
+                        type="text"
+                        placeholder="*Имя..."
+                        onChange={this.handleChange.bind(this, "name")}
+                        value={newUserData.name}
+                    />
+                    <input
+                        className="css-text-input"
+                        type="email"
+                        placeholder="*мояпочта@почта.бай..."
+                        onChange={this.handleChange.bind(this, "email")}
+                        value={newUserData.email}
+                    />
+                    <input
+                        className="css-text-input"
+                        type="password"
+                        placeholder="*Пароль..."
+                        onChange={this.handleChange.bind(this, "pass")}
+                        value={newUserData.pass}
+                    />
+                    <input
+                        className="css-text-input"
+                        type="password"
+                        placeholder="*Еще раз пароль..."
+                        onChange={this.handleChange.bind(this, "confirmPass")}
+                        value={newUserData.confirmPass}
+                    />
                     <button className="css-button" onClick={this.onSubmit}>
                         Регистрация
                     </button>
                 </form>
-                {serverMess && <div className="server-mess">{serverMess}</div>}
+
                 <div>
                     <p className="message">У меня есть учетная запись</p>
                     <button className="css-button">
-                        {" "}
                         <Link className="css-link" to="/login" onClick={this.handleClick}>
                             Войти
                         </Link>

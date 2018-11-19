@@ -9,6 +9,7 @@ import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
 import LoginForm from "../LoginForm/index";
 import Registration from "../Registration/index";
+import PassRecoveryPage from "../PassRecoveryPage/index";
 
 import DashBoard from "../DashBoard/index";
 
@@ -30,6 +31,7 @@ class App extends React.Component {
                             <Route exact path="/options" component={Options} />
                             <Route exact path="/game" component={Game} />
                             <Route exact path="/results" component={Results} />
+                            <Route exact path="/pass_recovery" component={PassRecoveryPage} />
                         </Switch>
                     </div>
                 </Router>

@@ -1,0 +1,44 @@
+.css-login {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    .css-login-form {
+        margin-top: 30px;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        align-self: center;
+        .css-text-input {
+            width: 100%;
+            box-sizing: border-box;
+            margin-bottom: 16px;
+        }
+        .css-button {
+            padding: 30px 30px;
+        }
+        .forgotPass {
+            padding: 10px 0;
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+    .server-mess {
+        padding: 18px;
+        border: 1px solid $_redBorder;
+        border-radius: 4px;
+        background-color: $_redBack;
+    }
+    .message {
+        align-self: center;
+        width: 400px;
+    }
+    .css-button {
+        align-self: center;
+        width: 400px;
+        padding: 30px 30px;
+        // margin-bottom: 100px;
+    }
+}

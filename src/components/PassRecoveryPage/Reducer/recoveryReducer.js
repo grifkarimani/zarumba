@@ -1,16 +1,14 @@
-import { SET_VALUE_BY_KEY } from "../Actions/actionTypes";
+import { RECOVERY_SET_VALUE_BY_KEY } from "../Actions/actionTypes";
 
 let initialState = {
-    name: "",
     email: "",
     pass: "",
-    confirmPass: "",
-    operation: "registration",
+    operation: "pass-recovery",
     serverMess: null
 };
-const RegistrationReducer = (state = initialState, action) => {
+const RecoveryReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_VALUE_BY_KEY:
+        case RECOVERY_SET_VALUE_BY_KEY:
             return {
                 ...state,
                 [action.payload.key]: action.payload.value
@@ -19,4 +17,4 @@ const RegistrationReducer = (state = initialState, action) => {
             return state;
     }
 };
-export default RegistrationReducer;
+export default RecoveryReducer;
