@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { onSetValue } from "./Actions/actions.js";
+import { onSetValue, onLoginSuccess, onLoginFailure } from "./Actions/actions.js";
 
 class LoginForm extends Component {
     constructor(props) {
@@ -21,19 +21,21 @@ class LoginForm extends Component {
         xhr.open("POST", url, false);
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         xhr.onload = () => {
-            if (xhr.status === 200) {
-                console.log("xhr.responseText", xhr.responseText);
-                // console.log(JSON.parse(xhr.responseText));
+            if (xhr.status === 200 && xhr.statusText === "OK") {
+                let data = JSON.parse(xhr.response);
+                if (data.status === "OK") {
+                    this.props.loginSuccess(data);
+                } else {
+                    this.props.loginFailure(data);
+                }
             } else {
-                console.log("status", xhr.status);
-                console.log("statusText", xhr.statusText);
+                console.log("xhr", xhr);
             }
         };
-        console.log("JSON.stringify(data)", "data=" + JSON.stringify(data));
         xhr.send("data=" + JSON.stringify(data));
     }
     render() {
-        const { serverMess = "sdfvsdfvvsdfvvdfv cascasdc casdcasasdc casc casdcasdc dcrcdcsybda bgs vbasfd vgsdf v", loginUserData } = this.props;
+        const { serverMess = "", loginUserData } = this.props;
         return (
             <div className="css-login">
                 {serverMess && <div className="server-mess">{serverMess}</div>}
@@ -68,7 +70,7 @@ class LoginForm extends Component {
                     </button>
                 </div>
                 <button className="css-button">
-                    <Link className="css-link" to="/rules" onClick={this.handleClick}>
+                    <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
                         Гостевой режим
                     </Link>
                 </button>
@@ -79,13 +81,20 @@ class LoginForm extends Component {
 const mapStateToProps = state => {
     console.log("mapStateToProps", state.LoginReducer);
     return {
-        loginUserData: state.LoginReducer
+        loginUserData: state.LoginReducer,
+        serverMess: state.AppReducer.serverMess
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
         setValueByName(value, key) {
             dispatch(onSetValue(value, key));
+        },
+        loginSuccess(data) {
+            dispatch(onLoginSuccess(data));
+        },
+        loginFailure(data) {
+            dispatch(onLoginFailure(data));
         }
     };
 };

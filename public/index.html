@@ -5,6 +5,12 @@
         <!-- <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" /> -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="theme-color" content="#000000" />
+        <link
+            rel="stylesheet"
+            href="https://use.fontawesome.com/releases/v5.5.0/css/all.css"
+            integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU"
+            crossorigin="anonymous"
+        />
         <!--
             manifest.json provides metadata used when your web app is added to the
             homescreen on Android. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -51,28 +57,26 @@
             <script type="text/javascript" src="/public/enter.js"></script>
         -->
 
-        <!--
-            <script>
-                window.onload = function() {
-                    var elem = document.querySelector("body > script");
-                    elem.parentNode.removeChild(elem);
+        <script>
+            window.onload = function() {
+                var elem = document.querySelector("body > script");
+                elem.parentNode.removeChild(elem);
 
-                    var e = document.createElement("script");
-                    e.src = "http://localhost:3000/static/js/bundle.js";
-                    e.type = "text/javascript";
-                    document.querySelector("body").appendChild(e);
+                var e = document.createElement("script");
+                e.src = "http://localhost:3000/static/js/bundle.js";
+                e.type = "text/javascript";
+                document.querySelector("body").appendChild(e);
 
-                    var e2 = document.createElement("script");
-                    e2.src = "http://localhost:3000/static/js/1.chunk.js";
-                    e2.type = "text/javascript";
-                    document.querySelector("body").appendChild(e2);
+                var e2 = document.createElement("script");
+                e2.src = "http://localhost:3000/static/js/1.chunk.js";
+                e2.type = "text/javascript";
+                document.querySelector("body").appendChild(e2);
 
-                    var e3 = document.createElement("script");
-                    e3.src = "http://localhost:3000/static/js/main.chunk.js";
-                    e3.type = "text/javascript";
-                    document.querySelector("body").appendChild(e3);
-                };
-            </script>
-        -->
+                var e3 = document.createElement("script");
+                e3.src = "http://localhost:3000/static/js/main.chunk.js";
+                e3.type = "text/javascript";
+                document.querySelector("body").appendChild(e3);
+            };
+        </script>
     </body>
 </html>

@@ -17,7 +17,7 @@ class DashBoard extends Component {
             <div className="css-dashboard">
                 <div className="dashboard-panel left">
                     <div className="css-info">
-                        <h2 className="header">Гостевой режим.</h2>
+                        <h1 className="header">Гостевой режим</h1>
                         <p className="content">
                             Гостевой режим не предполагает какого либо сохранения игры (ходов, статистики и так далее). данные не будут сохранены в случае
                             случайной перезагрузки страницы. Результат игры не попадет в историю. Разработчик вообще не несет никакой отвественности за данные в
@@ -38,19 +38,23 @@ class DashBoard extends Component {
                 </div>
                 <div className="dashboard-panel right">
                     <div className="css-info">
-                        <h2 className="header">Пользовательский режим.</h2>
+                        <h1 className="header">Пользовательский режим</h1>
                         <p className="content">
                             Ведется полная статистика, все ходы сохраняются, полностью сохраняется сессия и результаты встречи. После окончания происходит
-                            отправка результатов на электронную почту. Полная секретность гарантирована
+                            отправка результатов на электронную почту.
                         </p>
                     </div>
                     <div className="css-controls">
-                        <Link to="/login" className="css-button">
-                            Войти
-                        </Link>
-                        <Link to="/registration" className="css-button">
-                            Регистрация
-                        </Link>
+                        <button className="css-button">
+                            <Link to="/login" className="css-link">
+                                Войти
+                            </Link>
+                        </button>
+                        <button className="css-button">
+                            <Link to="/registration" className="css-link">
+                                Регистрация
+                            </Link>
+                        </button>
                     </div>
                 </div>
             </div>

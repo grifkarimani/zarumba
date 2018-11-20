@@ -1,9 +1,31 @@
 import React from "react";
+import { connect } from "react-redux";
+import UserInfo from "../UserInfo";
+import HeaderMenu from "../HeaderMenu";
 
 class Header extends React.Component {
     render() {
-        return <div className="css-header" />;
+        const { user } = this.props;
+        return (
+            <div className="css-header">
+                {user && <UserInfo />}
+                {user && <HeaderMenu />}
+            </div>
+        );
     }
 }
 
-export default Header;
+const mapStateToProps = state => {
+    console.log("state.AppReducer.currentUser", state.AppReducer.currentUser);
+    return {
+        user: state.AppReducer.currentUser
+    };
+};
+const mapDispatchToProps = dispatch => {
+    return {};
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Header);

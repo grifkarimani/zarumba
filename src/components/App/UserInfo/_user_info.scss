@@ -1,0 +1,33 @@
+.css-user-info {
+    min-width: 240px;
+    padding: 0px 16px;
+    display: flex;
+    justify-content: space-between;
+    border-left: 1px solid $_mainBorderColor;
+    .css-ava {
+        border: 1px solid $_mainBorderColor;
+        border-radius: 50%;
+        width: 58px;
+        height: 59px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        i {
+            font-size: 36px;
+            color: $_mainBorderColor;
+        }
+    }
+    .css-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        margin-left: 8px;
+        .css-name {
+            font-size: 18px;
+            margin-bottom: 2px;
+        }
+        .css-email {
+            font-size: 14px;
+        }
+    }
+}

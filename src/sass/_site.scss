@@ -29,7 +29,7 @@
         min-width: 990px;
         height: 80px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: center;
         background-color: $mainBackground;
         box-shadow: 4px 4px 6px 0px #cecece;
@@ -37,6 +37,7 @@
         top: 0;
         left: 0;
         right: 10px;
+        z-index: 200;
         .css-logo {
             display: flex;
             justify-content: flex-start;
@@ -75,6 +76,7 @@
         width: 200px;
         background-color: $mainBackground;
         box-shadow: 4px 4px 6px 0px #cecece;
+        z-index: 200;
     }
     .componentContainer {
         width: calc(100% - 40px);
@@ -120,14 +122,17 @@
         color: $_ligthTextColor;
     }
     &:focus {
+        border: 1px solid $_darkenBorderColor;
         outline: none;
-        box-shadow: $_shadow;
+        // box-shadow: $_shadow;
     }
 }
 
 .css-main-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     min-width: 780px;
-    // overflow: auto;
     position: fixed;
     top: 90px;
     right: 10px;

@@ -23,6 +23,7 @@ class Registration extends Component {
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             xhr.onload = () => {
                 if (xhr.status === 200) {
+
                     console.log("xhr.responseText", xhr.responseText);
                     // console.log(JSON.parse(xhr.responseText));
                 } else {
