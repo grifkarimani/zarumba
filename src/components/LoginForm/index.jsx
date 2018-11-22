@@ -26,6 +26,7 @@ class LoginForm extends Component {
                 let data = JSON.parse(xhr.response);
                 if (data.status === "OK") {
                     this.props.loginSuccess(data);
+                    this.props.changePage("/rules");
                 } else {
                     this.props.loginFailure(data);
                 }
@@ -38,7 +39,7 @@ class LoginForm extends Component {
     handleClick(e) {
         e.preventDefault();
         this.props.FAKEENTER();
-        this.props.changePage("/");
+        this.props.changePage("/rules");
     }
     render() {
         const { serverMess = "", loginUserData } = this.props;

@@ -57,28 +57,26 @@
             <script type="text/javascript" src="/public/enter.js"></script>
         -->
 
-        <!--
-            <script>
-                window.onload = function() {
-                    var elem = document.querySelector("body > script");
-                    elem.parentNode.removeChild(elem);
+        <script>
+            window.onload = function() {
+                var elem = document.querySelector("body > script");
+                elem.parentNode.removeChild(elem);
 
-                    var e = document.createElement("script");
-                    e.src = "http://localhost:3000/static/js/bundle.js";
-                    e.type = "text/javascript";
-                    document.querySelector("body").appendChild(e);
+                var e = document.createElement("script");
+                e.src = "http://localhost:3000/static/js/bundle.js";
+                e.type = "text/javascript";
+                document.querySelector("body").appendChild(e);
 
-                    var e2 = document.createElement("script");
-                    e2.src = "http://localhost:3000/static/js/1.chunk.js";
-                    e2.type = "text/javascript";
-                    document.querySelector("body").appendChild(e2);
+                var e2 = document.createElement("script");
+                e2.src = "http://localhost:3000/static/js/1.chunk.js";
+                e2.type = "text/javascript";
+                document.querySelector("body").appendChild(e2);
 
-                    var e3 = document.createElement("script");
-                    e3.src = "http://localhost:3000/static/js/main.chunk.js";
-                    e3.type = "text/javascript";
-                    document.querySelector("body").appendChild(e3);
-                };
-            </script>
-        -->
+                var e3 = document.createElement("script");
+                e3.src = "http://localhost:3000/static/js/main.chunk.js";
+                e3.type = "text/javascript";
+                document.querySelector("body").appendChild(e3);
+            };
+        </script>
     </body>
 </html>

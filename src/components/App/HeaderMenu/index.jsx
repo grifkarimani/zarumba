@@ -14,11 +14,12 @@ class HeaderMenu extends Component {
     }
     handleLogOut() {
         this.props.logOut();
+        this.props.changePage("/dashboard");
         // this.props.changePage("/dashboard");
     }
     handleClick() {
         this.props.FAKEOUT();
-        this.props.changePage("/rules");
+        this.props.changePage("/dashboard");
     }
     render() {
         console.log("handleLogOut", this.props);
@@ -50,8 +51,7 @@ class HeaderMenu extends Component {
 const mapStateToProps = state => {
     return {
         user: state.AppReducer.currentUser,
-        isOpen: state.AppReducer.visibilityState.menu,
-        router: state.router
+        isOpen: state.AppReducer.visibilityState.menu
     };
 };
 const mapDispatchToProps = dispatch => {
