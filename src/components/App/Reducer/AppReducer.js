@@ -17,6 +17,13 @@ const app = (state = initialState, action) => {
                 currentUser: action.payload,
                 serverMess: null
             };
+        case "ON_FAKEENTER":
+            return {
+                ...state,
+                loggedIn: true,
+                currentUser: action.payload,
+                serverMess: null
+            };
         case LOGIN_FAILURE:
             return {
                 ...state,

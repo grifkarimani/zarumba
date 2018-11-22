@@ -1,3 +1,5 @@
 export const LOGIN_SET_VALUE_BY_KEY = "LOGIN_SET_VALUE_BY_KEY";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
+
+export const ON_FAKEENTER = "ON_FAKEENTER";

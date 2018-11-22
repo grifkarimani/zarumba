@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { onSetValue, onLoginSuccess, onLoginFailure } from "./Actions/actions.js";
+import { push } from "connected-react-router";
+import { onSetValue, onLoginSuccess, onLoginFailure, ONFAKEENTER } from "./Actions/actions.js";
 
 class LoginForm extends Component {
     constructor(props) {
@@ -34,6 +35,11 @@ class LoginForm extends Component {
         };
         xhr.send("data=" + JSON.stringify(data));
     }
+    handleClick(e) {
+        e.preventDefault();
+        this.props.FAKEENTER();
+        this.props.changePage("/");
+    }
     render() {
         const { serverMess = "", loginUserData } = this.props;
         return (
@@ -43,34 +49,35 @@ class LoginForm extends Component {
                     <input
                         className="css-text-input"
                         type="text"
-                        placeholder="Email...*"
+                        placeholder="*E-mail..."
                         onChange={this.handleChange.bind(this, "email")}
                         value={loginUserData.email}
                     />
                     <input
                         className="css-text-input"
                         type="password"
-                        placeholder="Password...*"
+                        placeholder="*Пароль..."
                         onChange={this.handleChange.bind(this, "pass")}
                         value={loginUserData.pass}
                     />
-                    <Link className="css-link forgotPass" to="/pass_recovery" onClick={this.handleClick}>
+                    <Link className="css-link forgotPass" to="/pass_recovery">
                         Я забыл пароль...
                     </Link>
                     <button className="css-button" onClick={this.onSubmit}>
                         Войти
                     </button>
+                    <button onClick={this.handleClick.bind(this)}>Войти</button>
                 </form>
                 <div>
                     <p>У меня нет учетной записи</p>
                     <button className="css-button">
-                        <Link className="css-link" to="/registration" onClick={this.handleClick}>
+                        <Link className="css-link" to="/registration">
                             Регистрация
                         </Link>
                     </button>
                 </div>
                 <button className="css-button">
-                    <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
+                    <Link className="css-link" to="/dashboard">
                         Гостевой режим
                     </Link>
                 </button>
@@ -79,7 +86,6 @@ class LoginForm extends Component {
     }
 }
 const mapStateToProps = state => {
-    console.log("mapStateToProps", state.LoginReducer);
     return {
         loginUserData: state.LoginReducer,
         serverMess: state.AppReducer.serverMess
@@ -95,6 +101,12 @@ const mapDispatchToProps = dispatch => {
         },
         loginFailure(data) {
             dispatch(onLoginFailure(data));
+        },
+        changePage(path) {
+            dispatch(push(path));
+        },
+        FAKEENTER() {
+            dispatch(ONFAKEENTER());
         }
     };
 };
