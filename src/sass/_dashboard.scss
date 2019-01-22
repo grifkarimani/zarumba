@@ -1,59 +1,88 @@
 .css-dashboard {
-    padding: 40px;
-    display: flex;
-    justify-content: space-around;
     height: 100%;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
     .dashboard-panel {
-        flex-basis: 50%;
-        padding: 30px;
-        box-sizing: border-box;
         display: flex;
-        flex-direction: column;
         justify-content: center;
-
-        .css-info {
-            height: 300px;
-            .header {
-                text-decoration: underline;
-                margin-bottom: 40px;
+        align-items: center;
+        &.left {
+            margin-right: 2%;
+            .css-button{
+                width: 100% !important;
             }
             .content {
-                font-size: 20px;
+                color: #e60000;
             }
         }
-        .css-controls {
+        &.right {
+            margin-left: 2%;
+        }
+        .css-thumbNail {
+            width: 500px;
+            height: 74%;
+            border: 1px solid #e6e6e6;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 4px 4px 6px 0px #cecece;
             display: flex;
-            height: 100px;
-
-            .css-button {
-                width: 200px;
-                text-decoration: none;
-                text-align: center;
-                &.disabled {
-                    color: #d2d2d2;
+            flex-direction: column;
+            justify-content: space-between;
+            &:hover {
+                box-shadow: 6px 6px 10px 0px #cecece;
+            }
+            .css-info {
+                height: 300px;
+                .header {
+                    height: 100px;
+                    text-align: center;
+                    font-size: $Header2;
+                    padding: 20px;
+                }
+                .content {
+                    font-size: 20px;
+                    text-align: center;
+                }
+            }
+            .css-controls {
+                .css-accept{
+                    cursor: pointer;
                     &:hover {
-                        box-shadow: none;
+                        text-decoration: underline;
+                    }
+                }
+                display: flex;
+                justify-content: flex-end;
+                flex-direction: column;
+                justify-content: space-between;
+                height: 140px;
+                .additional-block{
+                    flex-basis: 30%
+                }
+                .buttons{
+                    flex-basis: 70%;
+                    display: flex;
+                    justify-content: space-between;
+                }
+                .css-button {
+                    width: 220px;
+                    text-decoration: none;
+                    text-align: center;
+                    font-size: 26px;
+                    &.disabled {
                         cursor: default;
+                            color: #d2d2d2;
+                            &:hover{
+                                cursor: default;
+                            }
+                        &:hover {
+                            box-shadow: none;
+                            cursor: default;
+                        }
                     }
                 }
             }
         }
-        &.left {
-            .css-controls {
-                flex-direction: column;
-                justify-content: space-between;
-                .css-button {
-                    width: 100%;
-                    // margin-top: 12px;
-                }
-            }
-        }
-        &.right {
-            .css-controls {
-                flex-direction: row;
-                justify-content: space-between;
-            }
-        }
+
     }
 }

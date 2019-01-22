@@ -45,43 +45,39 @@ class LoginForm extends Component {
         const { serverMess = "", loginUserData } = this.props;
         return (
             <div className="css-login">
-                {serverMess && <div className="server-mess">{serverMess}</div>}
-                <form className="css-login-form" action="">
-                    <input
-                        className="css-text-input"
-                        type="text"
-                        placeholder="*E-mail..."
-                        onChange={this.handleChange.bind(this, "email")}
-                        value={loginUserData.email}
-                    />
-                    <input
-                        className="css-text-input"
-                        type="password"
-                        placeholder="*Пароль..."
-                        onChange={this.handleChange.bind(this, "pass")}
-                        value={loginUserData.pass}
-                    />
-                    <Link className="css-link forgotPass" to="/pass_recovery">
-                        Я забыл пароль...
-                    </Link>
-                    <button className="css-button" onClick={this.onSubmit}>
-                        Войти
-                    </button>
-                    <button onClick={this.handleClick.bind(this)}>Войти</button>
-                </form>
-                <div>
-                    <p>У меня нет учетной записи</p>
-                    <button className="css-button">
-                        <Link className="css-link" to="/registration">
-                            Регистрация
+                <div className="css-form">
+                    <form className="css-login-form" action="">
+                        <input
+                            className="css-text-input"
+                            type="text"
+                            placeholder="*E-mail..."
+                            onChange={this.handleChange.bind(this, "email")}
+                            value={loginUserData.email}
+                        />
+                        <input
+                            className="css-text-input"
+                            type="password"
+                            placeholder="*Пароль..."
+                            onChange={this.handleChange.bind(this, "pass")}
+                            value={loginUserData.pass}
+                        />
+                        <Link className="css-link forgotPass" to="/pass_recovery">
+                            Я забыл пароль...
                         </Link>
-                    </button>
+                        <button className="css-button" onClick={this.onSubmit}>
+                            Войти
+                        </button>
+                    </form>
+                    <div className="contol-group">
+                        <button className="css-button">
+                            Регистрация
+                        </button>
+                        <button className="css-button">
+                            Гостевой режим
+                        </button>
+                    </div>
                 </div>
-                <button className="css-button">
-                    <Link className="css-link" to="/dashboard">
-                        Гостевой режим
-                    </Link>
-                </button>
+                {serverMess && <div className="server-mess">{serverMess}</div>}
             </div>
         );
     }
@@ -105,9 +101,6 @@ const mapDispatchToProps = dispatch => {
         },
         changePage(path) {
             dispatch(push(path));
-        },
-        FAKEENTER() {
-            dispatch(ONFAKEENTER());
         }
     };
 };

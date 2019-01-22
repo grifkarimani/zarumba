@@ -3,3 +3,4 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 
 export const ON_FAKEENTER = "ON_FAKEENTER";
+export const CLEAN_FORM = "CLEAN_FORM";

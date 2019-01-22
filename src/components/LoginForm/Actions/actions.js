@@ -1,4 +1,4 @@
-import { LOGIN_SET_VALUE_BY_KEY, LOGIN_SUCCESS, LOGIN_FAILURE, ON_FAKEENTER } from "./actionTypes";
+import { LOGIN_SET_VALUE_BY_KEY, LOGIN_SUCCESS, LOGIN_FAILURE, ON_FAKEENTER, CLEAN_FORM } from "./actionTypes";
 
 export const onSetValue = (value, key) => {
     return {
@@ -27,5 +27,10 @@ export const ONFAKEENTER = () => {
     return {
         type: ON_FAKEENTER,
         payload: { name: "Kir", email: "v;kd;fskm@" }
+    };
+};
+export const onCleanForm = () => {
+    return {
+        type: CLEAN_FORM
     };
 };
