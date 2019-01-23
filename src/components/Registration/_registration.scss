@@ -3,20 +3,42 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    height: 76%;
-    .css-registration-form {
-        margin-top: 30px;
-        width: 400px;
+    height: 100%;
+    .css-form {    
         display: flex;
         flex-direction: column;
-        align-self: center;
+        justify-content: space-between;
+        width: 600px;
+        border: 1px solid #e6e6e6;
+        height: 80%;
+        padding: 20px;
+        box-sizing: border-box;
+        box-shadow: 4px 4px 6px 0px #cecece;
+    }
+    .contol-group {
+        display: flex;
+        justify-content: space-between;
+        .css-button {
+            width: 270px;
+        }
+    }
+    .css-registration-form {
+        flex-direction: column;
+        flex-basis: 80%;
         .css-text-input {
             width: 100%;
             box-sizing: border-box;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            padding: 14px;
+            font-size: 32px;
+            &.invalid {
+                box-shadow: inset 0 0 4px #ff00007d;
+            }
         }
         .css-button {
             padding: 30px 30px;
+            width: 100%;
+            font-size: 34px;
         }
     }
     .server-mess {

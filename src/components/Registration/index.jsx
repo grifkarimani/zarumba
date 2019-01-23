@@ -7,15 +7,44 @@ import { push } from "connected-react-router";
 class Registration extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.setState({
+            nameIsValid: false,
+            emailIsValid: false,
+            passIsValid: false,
+            confirmPassIsValid: false,
+
+            loginAtempt: false
+        });
         this.onSubmit = this.onSubmit.bind(this);
     }
     handleChange(key, e) {
         const { setValueByName } = this.props;
         setValueByName(e.target.value, key);
     }
-    onSubmit(e) {
+    validateData() {
+        const { newUserData } = this.props;
+        let name = newUserData.name;
+        let email = newUserData.email;
+        let pass = newUserData.pass;
+        let confirmPass = newUserData.confirmPass;
+        this.setState({
+            nameIsValid: !!name,
+            emailIsValid: !!email,
+            passIsValid: !!pass,
+            confirmPassIsValid: !!confirmPass,
+            loginAtempt: true
+        });
+        return {
+            nameIsValid: !!name,
+            emailIsValid: !!email,
+            passIsValid: !!pass,
+            confirmPassIsValid: !!confirmPass,
+            loginAtempt: true
+        };
+    }
+    async onSubmit(e) {
         e.preventDefault();
+        let validation = await this.validateData();
         let data = this.props.newUserData;
         if (data.pass === data.confirmPass) {
             let url = "./main.php";
@@ -23,7 +52,7 @@ class Registration extends Component {
             xhr.open("POST", url, false);
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             xhr.onload = () => {
-                if (xhr.status === 200) {
+                if (xhr.status === 200 && xhr.statusText === "OK") {
                     console.log("xhr.responseText", xhr.responseText);
                     this.props.changePage("/login");
                 } else {
@@ -36,58 +65,58 @@ class Registration extends Component {
         }
     }
     render() {
-        const { serverMess = "sdfvsdfvvsdfvvdfv cascasdc casdcasasdc casc casdcasdc dcrcdcsybda bgs vbasfd vgsdf v", newUserData } = this.props;
+        const { serverMess = "", newUserData } = this.props;
         return (
             <div className="css-registration">
-                {serverMess && <div className="server-mess">{serverMess}</div>}
-                <form className="css-registration-form" action="">
-                    <input
-                        className="css-text-input"
-                        type="text"
-                        placeholder="*Имя..."
-                        onChange={this.handleChange.bind(this, "name")}
-                        value={newUserData.name}
-                    />
-                    <input
-                        className="css-text-input"
-                        type="email"
-                        placeholder="*мояпочта@почта.бай..."
-                        onChange={this.handleChange.bind(this, "email")}
-                        value={newUserData.email}
-                    />
-                    <input
-                        className="css-text-input"
-                        type="password"
-                        placeholder="*Пароль..."
-                        onChange={this.handleChange.bind(this, "pass")}
-                        value={newUserData.pass}
-                    />
-                    <input
-                        className="css-text-input"
-                        type="password"
-                        placeholder="*Еще раз пароль..."
-                        onChange={this.handleChange.bind(this, "confirmPass")}
-                        value={newUserData.confirmPass}
-                    />
-                    <button className="css-button" onClick={this.onSubmit}>
-                        Регистрация
-                    </button>
-                </form>
+                <div className="css-form">
+                    <form className="css-registration-form" action="">
+                        <input
+                            className="css-text-input"
+                            type="text"
+                            placeholder="*Имя..."
+                            onChange={this.handleChange.bind(this, "name")}
+                            value={newUserData.name}
+                        />
+                        <input
+                            className="css-text-input"
+                            type="email"
+                            placeholder="*мояпочта@почта.бай..."
+                            onChange={this.handleChange.bind(this, "email")}
+                            value={newUserData.email}
+                        />
+                        <input
+                            className="css-text-input"
+                            type="password"
+                            placeholder="*Пароль..."
+                            onChange={this.handleChange.bind(this, "pass")}
+                            value={newUserData.pass}
+                        />
+                        <input
+                            className="css-text-input"
+                            type="password"
+                            placeholder="*Еще раз пароль..."
+                            onChange={this.handleChange.bind(this, "confirmPass")}
+                            value={newUserData.confirmPass}
+                        />
+                        <button className="css-button" onClick={this.onSubmit}>
+                            Регистрация
+                        </button>
+                    </form>
+                    <div className="contol-group">
+                        <button className="css-button">
+                            <Link className="css-link" to="/login" onClick={this.handleClick}>
+                                Войти
+                            </Link>
+                        </button>
 
-                <div>
-                    <p className="message">У меня есть учетная запись</p>
-                    <button className="css-button">
-                        <Link className="css-link" to="/login" onClick={this.handleClick}>
-                            Войти
-                        </Link>
-                    </button>
+                        <button className="css-button">
+                            <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
+                                Гостевой режим
+                            </Link>
+                        </button>
+                    </div>
                 </div>
-
-                <button className="css-button">
-                    <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
-                        Гостевой режим
-                    </Link>
-                </button>
+                {serverMess && <div className="server-mess">{serverMess}</div>}
             </div>
         );
     }

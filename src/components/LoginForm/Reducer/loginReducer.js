@@ -1,4 +1,4 @@
-import { LOGIN_SET_VALUE_BY_KEY } from "../Actions/actionTypes";
+import { LOGIN_SET_VALUE_BY_KEY, CLEAN_FORM } from "../Actions/actionTypes";
 
 let initialState = {
     email: "",
@@ -12,8 +12,15 @@ const LoginReducer = (state = initialState, action) => {
                 ...state,
                 [action.payload.key]: action.payload.value
             };
+        case CLEAN_FORM:
+            return {
+                ...state,
+                email: "",
+                pass: ""
+            };
         default:
             return state;
     }
 };
+
 export default LoginReducer;

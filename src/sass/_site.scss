@@ -20,13 +20,11 @@
     }
 }
 .viewport {
-    min-width: 1000px;
+    min-width: 1300px;
 }
 .css-app {
-    min-width: 1000px;
     height: 100vh;
     .css-header {
-        min-width: 990px;
         height: 80px;
         display: flex;
         justify-content: flex-end;
@@ -129,10 +127,8 @@
 }
 
 .css-main-area {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-width: 780px;
+    // display: flex;
+    // justify-content: center;
     position: fixed;
     top: 90px;
     right: 10px;

@@ -16,7 +16,6 @@ class Header extends React.Component {
 }
 
 const mapStateToProps = state => {
-    console.log("state.AppReducer.currentUser", state.AppReducer.currentUser);
     return {
         user: state.AppReducer.currentUser
     };
