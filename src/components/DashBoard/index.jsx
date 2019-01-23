@@ -6,7 +6,7 @@ import { modeAccept } from "../App/Actions/actions";
 class DashBoard extends Component {
     handleClick(path, isAccept) {
         if (isAccept) {
-            this.props.history.push(path)
+            this.props.history.push(path);
         }
     }
     render() {
@@ -15,48 +15,31 @@ class DashBoard extends Component {
             <div className="css-dashboard">
                 <div className="dashboard-panel left">
                     <div className="css-thumbNail">
-                        <div className="css-info">
-                            <div className="header">Гостевой режим</div>
-                            <div className="content">
-                                Гостевой режим не предполагает какого либо сохранения игры (ходов, статистики и так далее). Данные не будут сохранены в случае
-                                случайной перезагрузки страницы. Результат игры не попадет в историю. Разработчик вообще не несет никакой отвественности за данные в
-                            рамках гостевого режима.
-                            </div>
-                        </div>
-                        <div className="css-controls">
-                            <div className="additional-block">
-                                <label htmlFor="001" className="css-accept">
-                                    <input type="checkbox" name="" id="001" checked={guestModeAccept} onChange={onGuestModeAcceptChange} />Я прочитал и согласен на
-                                    гостевой режим
-                            </label>
-                            </div>
-                            <div className="buttons">
-                                <button className={["css-button", guestModeAccept ? "" : "disabled"].join(" ")} onClick={this.handleClick.bind(this, "/rules", this.props.guestModeAccept)}>
-                                    Гостевой режим
-                                </button>
-                            </div>
+                        <span className="custom-icon">
+                            <i class="fas fa-user-secret" />
+                        </span>
 
+                        <div className="content">
+                            <div className="header">Инкогнито</div>
+
+                            <div className="text">
+                                Не предполагает какого либо сохранения игры (ходов, статистики и так далее). Данные не будут сохранены в случае случайной
+                                перезагрузки страницы. Результат игры не попадет в историю. Разработчик вообще не несет никакой отвественности за данные в
+                                рамках гостевого режима.
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="dashboard-panel right">
                     <div className="css-thumbNail">
-                        <div className="css-info">
-                            <div className="header">Пользовательский режим</div>
-                            <div className="content">
+                        <span className="custom-icon">
+                            <i class="fas fa-user-shield" />
+                        </span>
+                        <div className="content">
+                            <div className="header">Полная версия</div>
+                            <div className="text">
                                 Ведется полная статистика, все ходы сохраняются, полностью сохраняется сессия и результаты встречи. После окончания происходит
                                 отправка результатов на электронную почту.
-                            </div>
-                        </div>
-                        <div className="css-controls">
-                            <div className="additional-block"></div>
-                            <div className="buttons">
-                                <button className="css-button" onClick={this.handleClick.bind(this, "/login", true)}>
-                                    Войти
-                                </button>
-                                <button className="css-button" onClick={this.handleClick.bind(this, "/registration", true)}>
-                                    Регистрация
-                                </button>
                             </div>
                         </div>
                     </div>
