@@ -3,6 +3,8 @@
     display: flex;
     justify-content: space-around;
     height: 100%;
+    max-width: 1200px;
+    min-width: 1000px;
     box-sizing: border-box;
     .dashboard-panel {
         flex-basis: 50%;
