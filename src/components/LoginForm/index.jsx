@@ -65,7 +65,7 @@ class LoginForm extends Component {
         return (
             <div className="css-login">
                 <div className="css-form">
-                    <form className="css-login-form" action="">
+                    <form className="input-group" action="">
                         <input
                             className="css-text-input"
                             type="text"

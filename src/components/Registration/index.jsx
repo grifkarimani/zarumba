@@ -69,7 +69,7 @@ class Registration extends Component {
         return (
             <div className="css-registration">
                 <div className="css-form">
-                    <form className="css-registration-form" action="">
+                    <form className="input-group" action="">
                         <input
                             className="css-text-input"
                             type="text"
