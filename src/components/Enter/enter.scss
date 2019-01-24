@@ -17,25 +17,24 @@
       justify-content: center;
       width: 540px;
       min-width: 540px;
-      padding: 20px;
+      padding: 90px 4px 18px 4px;
       margin: 0 20px;
       box-sizing: border-box;
-      border-bottom: 10px solid $_lightBlueText;
+      border-bottom: 4px solid $_lightBlueText;
       &.disabled {
-        border-bottom: 10px solid $_mainBorderColor;
+        border-bottom: 4px solid $_mainBorderColor;
         color: $_mainTextColor;
       }
     }
   }
   .css-form {
+    height: 80%;
     .css-basis-button {
       color: $_lightBlueText;
-      font-weight: 600;
     }
     &.disabled {
       .css-basis-button {
         color: $_mainTextColor;
-        font-weight: 100;
       }
     }
   }
