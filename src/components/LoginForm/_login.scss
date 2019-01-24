@@ -1,74 +1,35 @@
-.css-login {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%;
-    .css-form {    
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        width: 600px;
-        border: 1px solid #e6e6e6;
-        height: 80%;
-        padding: 20px;
-        box-sizing: border-box;
-        box-shadow: 4px 4px 6px 0px #cecece;
+.css-button {
+    padding: 30px 30px;
+    width: 100%;
+    font-size: 34px;
+}
+.forgotPass {
+    margin-top: 0px;
+    padding: 0;
+    margin-bottom: 70px;
+    text-align: right;
+    &:hover {
+        text-decoration: underline;
     }
-    .contol-group {
-        display: flex;
-        justify-content: space-between;
-        .css-button {
-            width: 270px;
-        }
+    .forgotPass-title {
+        cursor: pointer;
     }
-    .css-login-form {
-        display: flex;
-        flex-direction: column;
-        flex-basis: 80%;
-        .css-text-input {
-            width: 100%;
-            box-sizing: border-box;
-            margin-bottom: 20px;
-            padding: 14px;
-            font-size: 32px;
-            &.invalid {
-                box-shadow: inset 0 0 4px #ff00007d;
-            }
-        }
-        .css-button {
-            padding: 30px 30px;
-            width: 100%;
-            font-size: 34px;
-        }
-        .forgotPass {
-            margin-top: 0px;
-            padding: 0;
-            margin-bottom: 70px;
-            text-align: right;
-            &:hover {
-                text-decoration: underline;
-            }
-            .forgotPass-title {
-                cursor: pointer;
-            }
-        }
-    }
-    .server-mess {
-        position: absolute;
-        padding: 18px;
-        border: 1px solid $_redBorder;
-        border-radius: 4px;
-        background-color: $_redBack;
-    }
-    .message {
-        align-self: center;
-        width: 400px;
-    }
-    .css-button {
-        align-self: center;
-        width: 400px;
-        padding: 30px 30px;
-        // margin-bottom: 100px;
-    }
+}
+
+.server-mess {
+    position: absolute;
+    padding: 18px;
+    border: 1px solid $_redBorder;
+    border-radius: 4px;
+    background-color: $_redBack;
+}
+.message {
+    align-self: center;
+    width: 400px;
+}
+.css-button {
+    align-self: center;
+    width: 400px;
+    padding: 30px 30px;
+    // margin-bottom: 100px;
 }

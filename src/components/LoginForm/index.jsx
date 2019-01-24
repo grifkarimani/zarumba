@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { onSetValue, onLoginSuccess, onLoginFailure, ONFAKEENTER } from "./Actions/actions.js";
+import requestBuilder from "../../helpers/requestBuilder";
 
 class LoginForm extends Component {
     constructor(props) {
@@ -16,25 +17,43 @@ class LoginForm extends Component {
     }
     onSubmit(e) {
         e.preventDefault();
-        let data = this.props.loginUserData;
-        let url = "./main.php";
-        let xhr = new XMLHttpRequest();
-        xhr.open("POST", url, false);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        xhr.onload = () => {
-            if (xhr.status === 200 && xhr.statusText === "OK") {
-                let data = JSON.parse(xhr.response);
-                if (data.status === "OK") {
-                    this.props.loginSuccess(data);
-                    this.props.changePage("/rules");
-                } else {
-                    this.props.loginFailure(data);
-                }
-            } else {
-                console.log("xhr", xhr);
-            }
-        };
-        xhr.send("data=" + JSON.stringify(data));
+        let request = new requestBuilder("./main.php", "POST", "login", this.props.loginUserData);
+        request
+            .sendRequest()
+            .then(response => {
+                console.log("response", response);
+                return JSON.parse(response);
+            })
+            .then(data => {
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        // let data = this.props.loginUserData;
+
+        // let xhr = new XMLHttpRequest();
+        // xhr.open("POST", url, false);
+        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        // xhr.onload = () => {
+        //     if (xhr.status === 200 && xhr.statusText === "OK") {
+        //         let data = JSON.parse(xhr.response);
+        //         if (data.status === "OK") {
+        //             console.log("xhr", xhr);
+        //             if (data.status === "OK") {
+        //                 this.props.loginSuccess(data);
+        //                 this.props.changePage("/rules");
+        //             } else {
+        //             }
+        //             this.props.loginSuccess(data);
+        //         } else {
+        //             this.props.loginFailure(data);
+        //         }
+        //     } else {
+        //         console.log("xhr", xhr);
+        //     }
+        // };
+        // xhr.send("data=" + JSON.stringify(data));
     }
     handleClick(e) {
         e.preventDefault();
@@ -46,7 +65,7 @@ class LoginForm extends Component {
         return (
             <div className="css-login">
                 <div className="css-form">
-                    <form className="css-login-form" action="">
+                    <form className="input-group" action="">
                         <input
                             className="css-text-input"
                             type="text"
@@ -69,12 +88,8 @@ class LoginForm extends Component {
                         </button>
                     </form>
                     <div className="contol-group">
-                        <button className="css-button">
-                            Регистрация
-                        </button>
-                        <button className="css-button">
-                            Гостевой режим
-                        </button>
+                        <button className="css-button">Регистрация</button>
+                        <button className="css-button">Гостевой режим</button>
                     </div>
                 </div>
                 {serverMess && <div className="server-mess">{serverMess}</div>}

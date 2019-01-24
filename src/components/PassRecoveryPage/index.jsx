@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { onSetValue } from "./Actions/actions.js";
 import { Link } from "react-router-dom";
+import { push } from "connected-react-router";
 
 class PassRecoveryPage extends Component {
     constructor(props) {
@@ -24,8 +25,12 @@ class PassRecoveryPage extends Component {
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
         xhr.onload = () => {
             if (xhr.status === 200) {
-                console.log("xhr.responseText", xhr.responseText);
+                console.log("xhr.responseText", xhr);
+                console.log("xhr.response.status", xhr.response);
                 // console.log(JSON.parse(xhr.responseText));
+
+                console.log("Success");
+                this.props.changePage("/login");
             } else {
                 console.log("status", xhr.status);
                 console.log("statusText", xhr.statusText);
@@ -81,6 +86,9 @@ const mapDispatchToProps = dispatch => {
     return {
         setValueByName(value, key) {
             dispatch(onSetValue(value, key));
+        },
+        changePage(path) {
+            dispatch(push(path));
         }
     };
 };

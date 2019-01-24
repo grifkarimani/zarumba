@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { onSetValue } from "./Actions/actions.js";
+import { push } from "connected-react-router";
 
 class Registration extends Component {
     constructor(props) {
@@ -13,7 +14,7 @@ class Registration extends Component {
             confirmPassIsValid: false,
 
             loginAtempt: false
-        })
+        });
         this.onSubmit = this.onSubmit.bind(this);
     }
     handleChange(key, e) {
@@ -32,20 +33,18 @@ class Registration extends Component {
             passIsValid: !!pass,
             confirmPassIsValid: !!confirmPass,
             loginAtempt: true
-        })
+        });
         return {
             nameIsValid: !!name,
             emailIsValid: !!email,
             passIsValid: !!pass,
             confirmPassIsValid: !!confirmPass,
             loginAtempt: true
-        }
-
-
+        };
     }
     async onSubmit(e) {
         e.preventDefault();
-        let validation = await this.validateData()
+        let validation = await this.validateData();
         let data = this.props.newUserData;
         if (data.pass === data.confirmPass) {
             let url = "./main.php";
@@ -54,9 +53,8 @@ class Registration extends Component {
             xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
             xhr.onload = () => {
                 if (xhr.status === 200 && xhr.statusText === "OK") {
-
                     console.log("xhr.responseText", xhr.responseText);
-                    // console.log(JSON.parse(xhr.responseText));
+                    this.props.changePage("/login");
                 } else {
                     console.log("status", xhr.status);
                     console.log("statusText", xhr.statusText);
@@ -71,8 +69,7 @@ class Registration extends Component {
         return (
             <div className="css-registration">
                 <div className="css-form">
-
-                    <form className="css-registration-form" action="">
+                    <form className="input-group" action="">
                         <input
                             className="css-text-input"
                             type="text"
@@ -103,22 +100,21 @@ class Registration extends Component {
                         />
                         <button className="css-button" onClick={this.onSubmit}>
                             Регистрация
-                    </button>
+                        </button>
                     </form>
                     <div className="contol-group">
                         <button className="css-button">
                             <Link className="css-link" to="/login" onClick={this.handleClick}>
                                 Войти
-                        </Link>
+                            </Link>
                         </button>
 
                         <button className="css-button">
                             <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
                                 Гостевой режим
-                    </Link>
+                            </Link>
                         </button>
                     </div>
-
                 </div>
                 {serverMess && <div className="server-mess">{serverMess}</div>}
             </div>
@@ -134,6 +130,9 @@ const mapDispatchToProps = dispatch => {
     return {
         setValueByName(value, key) {
             dispatch(onSetValue(value, key));
+        },
+        changePage(path) {
+            dispatch(push(path));
         }
     };
 };

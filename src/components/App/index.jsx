@@ -8,8 +8,7 @@ import Game from "../Game/index.jsx";
 import Header from "./Header/index";
 import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
-import LoginForm from "../LoginForm/index";
-import Registration from "../Registration/index";
+import Enter from "../Enter";
 import PassRecoveryPage from "../PassRecoveryPage/index";
 
 import DashBoard from "../DashBoard/index";
@@ -25,8 +24,7 @@ class App extends React.Component {
                     <div className="css-main-area">
                         <Switch>
                             <Route exact path="/" component={DashBoard} />
-                            <Route exact path="/login" component={LoginForm} />
-                            <Route exact path="/registration" component={Registration} />
+                            <Route exact path="/enter" component={Enter} />
                             <Route exact path="/dashboard" component={DashBoard} />
                             <Route exact path="/rules" component={Rules} />
                             <Route exact path="/options" component={Options} />

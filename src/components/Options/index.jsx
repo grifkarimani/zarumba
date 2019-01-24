@@ -20,6 +20,7 @@ class Options extends React.Component {
         return [...new Set(messages)];
     }
     handleStart(e) {
+        debugger;
         e.preventDefault();
         if (!this.validateNames().length) {
             this.props.history.push("/game");
