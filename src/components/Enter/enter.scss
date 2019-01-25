@@ -1,48 +1,54 @@
 .enter {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  height: 100%;
-  .css-form-switch {
-    width: 100%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
-    font-size: 40px;
-    .switch-option {
-      color: $_lightBlueText;
-      cursor: pointer;
-      display: flex;
-      justify-content: center;
-      width: 540px;
-      min-width: 540px;
-      padding: 90px 4px 18px 4px;
-      margin: 0 20px;
-      box-sizing: border-box;
-      border-bottom: 4px solid $_lightBlueText;
-      &.disabled {
-        border-bottom: 4px solid $_mainBorderColor;
-        color: $_mainTextColor;
-      }
+    height: 100%;
+    .css-form-switch {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 40px;
+        .switch-option {
+            color: $_lightBlueText;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            width: 540px;
+            min-width: 540px;
+            padding: 90px 4px 18px 4px;
+            margin: 0 20px;
+            box-sizing: border-box;
+            border-bottom: 4px solid $_lightBlueText;
+            transition: 0.3s;
+            &.disabled {
+                border-bottom: 4px solid $_mainBorderColor;
+                color: $_mainTextColor;
+                opacity: 0.4;
+            }
+        }
     }
-  }
-  .css-form {
-    height: 80%;
-    .css-basis-button {
-      color: $_lightBlueText;
+    .css-form {
+        .css-form-overlay {
+            cursor: pointer;
+        }
+        height: 80%;
+        transition: 0.3s;
+        .css-basis-button {
+            color: $_lightBlueText;
+        }
+        &.disabled {
+            .css-basis-button {
+                color: $_mainTextColor;
+            }
+        }
     }
-    &.disabled {
-      .css-basis-button {
-        color: $_mainTextColor;
-      }
-    }
-  }
 
-  .css-forms-container {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    height: 80%;
-  }
+    .css-forms-container {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        height: 80%;
+    }
 }

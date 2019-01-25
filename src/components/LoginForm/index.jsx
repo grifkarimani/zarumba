@@ -4,95 +4,103 @@ import { connect } from "react-redux";
 import { push } from "connected-react-router";
 import { onSetValue, onLoginSuccess, onLoginFailure, ONFAKEENTER } from "./Actions/actions.js";
 import requestBuilder from "../../helpers/requestBuilder";
+import TextInput from "../Input";
 
 class LoginForm extends Component {
     constructor(props) {
         super(props);
         this.state = {};
-        this.onSubmit = this.onSubmit.bind(this);
+        // this.onSubmit = this.onSubmit.bind(this);
     }
-    handleChange(key, e) {
-        const { setValueByName } = this.props;
-        setValueByName(e.target.value, key);
-    }
-    onSubmit(e) {
-        e.preventDefault();
-        let request = new requestBuilder("./main.php", "POST", "login", this.props.loginUserData);
-        request
-            .sendRequest()
-            .then(response => {
-                console.log("response", response);
-                return JSON.parse(response);
-            })
-            .then(data => {
-                console.log(data);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-        // let data = this.props.loginUserData;
+    // handleChange(key, e) {
+    //     const { setValueByName } = this.props;
+    //     setValueByName(e.target.value, key);
+    // }
+    // onSubmit(e) {
+    //     e.preventDefault();
+    //     let request = new requestBuilder("./main.php", "POST", "login", this.props.loginUserData);
+    //     request
+    //         .sendRequest()
+    //         .then(response => {
+    //             console.log("response", response);
+    //             return JSON.parse(response);
+    //         })
+    //         .then(data => {
+    //             console.log(data);
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    //     // let data = this.props.loginUserData;
 
-        // let xhr = new XMLHttpRequest();
-        // xhr.open("POST", url, false);
-        // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
-        // xhr.onload = () => {
-        //     if (xhr.status === 200 && xhr.statusText === "OK") {
-        //         let data = JSON.parse(xhr.response);
-        //         if (data.status === "OK") {
-        //             console.log("xhr", xhr);
-        //             if (data.status === "OK") {
-        //                 this.props.loginSuccess(data);
-        //                 this.props.changePage("/rules");
-        //             } else {
-        //             }
-        //             this.props.loginSuccess(data);
-        //         } else {
-        //             this.props.loginFailure(data);
-        //         }
-        //     } else {
-        //         console.log("xhr", xhr);
-        //     }
-        // };
-        // xhr.send("data=" + JSON.stringify(data));
-    }
-    handleClick(e) {
-        e.preventDefault();
-        this.props.FAKEENTER();
-        this.props.changePage("/rules");
+    //     // let xhr = new XMLHttpRequest();
+    //     // xhr.open("POST", url, false);
+    //     // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+    //     // xhr.onload = () => {
+    //     //     if (xhr.status === 200 && xhr.statusText === "OK") {
+    //     //         let data = JSON.parse(xhr.response);
+    //     //         if (data.status === "OK") {
+    //     //             console.log("xhr", xhr);
+    //     //             if (data.status === "OK") {
+    //     //                 this.props.loginSuccess(data);
+    //     //                 this.props.changePage("/rules");
+    //     //             } else {
+    //     //             }
+    //     //             this.props.loginSuccess(data);
+    //     //         } else {
+    //     //             this.props.loginFailure(data);
+    //     //         }
+    //     //     } else {
+    //     //         console.log("xhr", xhr);
+    //     //     }
+    //     // };
+    //     // xhr.send("data=" + JSON.stringify(data));
+    // }
+    // handleClick(e) {
+    //     e.preventDefault();
+    //     this.props.FAKEENTER();
+    //     this.props.changePage("/rules");
+    // }
+    handleOverlayClick(formKey) {
+        const { setForm } = this.props;
+        setForm(formKey);
     }
     render() {
-        const { serverMess = "", loginUserData } = this.props;
+        const { serverMess = "", loginUserData, isActive } = this.props;
         return (
-            <div className="css-login">
-                <div className="css-form">
-                    <form className="input-group" action="">
-                        <input
-                            className="css-text-input"
-                            type="text"
-                            placeholder="*E-mail..."
-                            onChange={this.handleChange.bind(this, "email")}
-                            value={loginUserData.email}
-                        />
-                        <input
-                            className="css-text-input"
-                            type="password"
-                            placeholder="*Пароль..."
-                            onChange={this.handleChange.bind(this, "pass")}
-                            value={loginUserData.pass}
-                        />
-                        <Link className="css-link forgotPass" to="/pass_recovery">
-                            Я забыл пароль...
+            <div className={`css-form login-form ${isActive ? "" : "disabled"}`}>
+                {!isActive && <div className="css-form-overlay" onClick={this.handleOverlayClick.bind(this, "login")} />}
+                <div className="input-group">
+                    <TextInput
+                        type="text"
+                        placeholder="*Электронная почта..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-at"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
+                    <TextInput
+                        type="password"
+                        placeholder="*Пароль..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-key"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
+                    <div className="css-pass-recovery-link">
+                        <Link className="css-link" to="/pass_recovery">
+                            <i class="css-icon fas fa-question-circle" />
+                            <span className="linkText">Я забыл пароль...</span>
                         </Link>
-                        <button className="css-button" onClick={this.onSubmit}>
-                            Войти
-                        </button>
-                    </form>
-                    <div className="contol-group">
-                        <button className="css-button">Регистрация</button>
-                        <button className="css-button">Гостевой режим</button>
                     </div>
                 </div>
-                {serverMess && <div className="server-mess">{serverMess}</div>}
+                <div className="contol-group">
+                    <button className="css-basis-button" onClick={this.onSubmit}>
+                        Войти
+                    </button>
+                </div>
             </div>
         );
     }

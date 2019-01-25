@@ -10,6 +10,7 @@ import LeftBar from "./LeftBar/index";
 import Results from "../Results/index";
 import Enter from "../Enter";
 import PassRecoveryPage from "../PassRecoveryPage/index";
+import PassRecoverySuccess from "../PassRecoverySuccess";
 
 import DashBoard from "../DashBoard/index";
 
@@ -31,6 +32,8 @@ class App extends React.Component {
                             <Route exact path="/game" component={Game} />
                             <Route exact path="/results" component={Results} />
                             <Route exact path="/pass_recovery" component={PassRecoveryPage} />
+
+                            <Route exact path="/recoverySuccess" component={PassRecoverySuccess} />
                         </Switch>
                     </div>
                 </ConnectedRouter>

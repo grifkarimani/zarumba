@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { onSetValue } from "./Actions/actions.js";
 import { push } from "connected-react-router";
+import TextInput from "../Input";
 
 class Registration extends Component {
     constructor(props) {
@@ -64,59 +65,58 @@ class Registration extends Component {
             xhr.send("data=" + JSON.stringify(data));
         }
     }
+    handleOverlayClick(formKey) {
+        const { setForm } = this.props;
+        setForm(formKey);
+    }
     render() {
-        const { serverMess = "", newUserData } = this.props;
+        const { serverMess = "", newUserData, isActive } = this.props;
         return (
-            <div className="css-registration">
-                <div className="css-form">
-                    <form className="input-group" action="">
-                        <input
-                            className="css-text-input"
-                            type="text"
-                            placeholder="*Имя..."
-                            onChange={this.handleChange.bind(this, "name")}
-                            value={newUserData.name}
-                        />
-                        <input
-                            className="css-text-input"
-                            type="email"
-                            placeholder="*мояпочта@почта.бай..."
-                            onChange={this.handleChange.bind(this, "email")}
-                            value={newUserData.email}
-                        />
-                        <input
-                            className="css-text-input"
-                            type="password"
-                            placeholder="*Пароль..."
-                            onChange={this.handleChange.bind(this, "pass")}
-                            value={newUserData.pass}
-                        />
-                        <input
-                            className="css-text-input"
-                            type="password"
-                            placeholder="*Еще раз пароль..."
-                            onChange={this.handleChange.bind(this, "confirmPass")}
-                            value={newUserData.confirmPass}
-                        />
-                        <button className="css-button" onClick={this.onSubmit}>
-                            Регистрация
-                        </button>
-                    </form>
-                    <div className="contol-group">
-                        <button className="css-button">
-                            <Link className="css-link" to="/login" onClick={this.handleClick}>
-                                Войти
-                            </Link>
-                        </button>
-
-                        <button className="css-button">
-                            <Link className="css-link" to="/dashboard" onClick={this.handleClick}>
-                                Гостевой режим
-                            </Link>
-                        </button>
-                    </div>
+            <div className={`css-form registration-form ${isActive ? "" : "disabled"}`}>
+                {!isActive && <div className="css-form-overlay" onClick={this.handleOverlayClick.bind(this, "registration")} />}
+                <div className="input-group">
+                    <TextInput
+                        type="text"
+                        placeholder="*Имя..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-user"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
+                    <TextInput
+                        type="text"
+                        placeholder="*Электронная почта..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-at"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
+                    <TextInput
+                        type="password"
+                        placeholder="*Пароль..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-key"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
+                    <TextInput
+                        type="password"
+                        placeholder="*Пароль еще раз..."
+                        onChange={this.handleChange}
+                        value=""
+                        icon="fa-key"
+                        required={true}
+                        validation={{ isValid: true, message: "" }}
+                    />
                 </div>
-                {serverMess && <div className="server-mess">{serverMess}</div>}
+                <div className="contol-group">
+                    <button className="css-basis-button" onClick={this.onSubmit}>
+                        Регистрация
+                    </button>
+                </div>
             </div>
         );
     }
