@@ -26,6 +26,10 @@ class LoginForm extends Component {
       cleanForm();
     }
   }
+  componentWillUnmount() {
+    const { cleanForm } = this.props;
+    cleanForm();
+  }
   handleChange(key, value) {
     const { setValueByName } = this.props;
     setValueByName(value, key);

@@ -14,62 +14,63 @@
       margin-left: 2%;
     }
     .css-thumbNail {
+      position: relative;
       cursor: pointer;
       width: 500px;
       height: 74%;
-      border: 1px solid #e6e6e6;
-      padding: 20px;
       box-sizing: border-box;
-      box-shadow: 4px 4px 6px 0px #cecece;
+      box-shadow: 8px 8px 16px 0px #cecece;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-
-      overflow: hidden;
-
+      border-radius: 4px;
+      box-shadow: inset 0 0 2px $Thumb, $_shadow;
+      padding: 30px;
       &:hover {
         .custom-icon {
-          height: 70%;
+          transition: opacity 0.2s;
+          opacity: 0.2;
         }
         .content {
-          height: 30%;
-          .header {
-            top: -70px;
-            color: white;
-            text-align: center;
-            font-size: 34px;
-          }
+          opacity: 1;
         }
       }
       .custom-icon {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
         background-color: $Thumb;
-        font-size: 180px;
-        color: white;
-        height: 100%;
-        transition: height 0.1s;
+        border-radius: 4px;
+        transition: opacity 0.2s;
+        opacity: 1;
+        .fas {
+          font-size: 180px;
+          color: white;
+        }
+        .header {
+          font-weight: 600;
+          color: white;
+          font-size: 44px;
+          margin-top: 40px;
+        }
       }
       .content {
-        // border: 0.5px solid #9fbfc3;
-        font-size: 18px;
-        height: 0;
-        transition: height 0.1s;
         position: relative;
-        .header {
-          font-size: 20px;
-          font-weight: 600;
-          margin-bottom: 6px;
-          position: relative;
-          top: 0;
-          color: white;
-          text-align: center;
-          font-size: 34px;
-          transition: top 0.1s;
-        }
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
         .text {
-          font-size: 16px;
+          font-size: 22px;
+          text-align: center;
+          font-weight: bold;
         }
       }
     }

@@ -30,6 +30,10 @@ class Registration extends Component {
       cleanForm();
     }
   }
+  componentWillUnmount() {
+    const { cleanForm } = this.props;
+    cleanForm();
+  }
   handleChange(key, value) {
     const { setValueByName } = this.props;
     console.log(key);

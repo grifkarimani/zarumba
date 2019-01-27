@@ -1,23 +1,45 @@
 .css-rules {
-    width: 70%;
-    height: 100%;
-    padding: 40px;
-    overflow: hidden;
-    margin: 0 auto;
-    box-sizing: border-box;
-    .css-content {
-        height: 92%;
-        overflow: auto;
+  width: 70%;
+  height: 100%;
+  padding: 40px;
+  overflow: hidden;
+  margin: 0 auto;
+  box-sizing: border-box;
+  .css-content {
+    height: 92%;
+    overflow: auto;
+  }
+  .css-rules-controls {
+    height: 8%;
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    .css-basis-button {
+      width: 240px;
+      min-width: 240px;
     }
-    .css-rules-controls {
-        height: 8%;
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        .css-link {
-            text-decoration: none;
-            color: inherit;
+  }
+  .ant-collapse {
+    font-size: 18px;
+    color: $_mainTextColor;
+    font-family: "Montserrat", sans-serif;
+    .ant-collapse-item {
+      .ant-collapse-header {
+        font-size: 26px;
+        color: $_mainTextColor;
+        padding: 18px 0 18px 40px;
+        .anticon {
         }
+      }
+      .ant-collapse-content {
+        .ant-collapse-content-box {
+          padding: 16px 0 16px 40px;
+          .panel-content {
+            color: $_mainTextColor;
+          }
+        }
+      }
     }
+  }
 }

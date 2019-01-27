@@ -14,12 +14,11 @@ export default class thumbNail extends Component {
     const { header, text, icon } = this.props;
     return (
       <div className="css-thumbNail" onClick={this.handleClick}>
-        <span className="custom-icon">
+        <div className="custom-icon">
           <i className={`fas ${icon}`} />
-        </span>
-        <div className="content">
           <div className="header">{header}</div>
-
+        </div>
+        <div className="content">
           <div className="text">{text}</div>
         </div>
       </div>
