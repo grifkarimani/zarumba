@@ -20,6 +20,7 @@ class StartOptions extends React.Component {
         });
         return (
             <div className="css-start-options">
+                <div className="css-marker-wrapper" />
                 {optionsArray.map(option => (
                     <StartOption
                         id={option.id}

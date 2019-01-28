@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import remove from "../../../media/remove.svg";
 import add from "../../../media/add.svg";
 import info from "../../../media/info.svg";
+import TextInput from "../../Input";
 // import Marker from "../StartOptions/Marker";
 
 import { addNewPlayer, removePlayer, setPlayerName } from "../Actions/actions";
@@ -22,46 +23,24 @@ class Players extends React.Component {
         const addButtonVisible = players.length < 7;
         return (
             <div className="css-players">
-                <div className="css-players-controls">
-                    {/* <Marker /> */}
-                    {players.map(player => {
-                        return (
-                            <div className="css-player-name" key={player.id}>
-                                <input
-                                    className="css-text-input"
-                                    type="text"
-                                    placeholder={player.placeholder || "Имя..."}
-                                    value={player.name}
-                                    id={player.id}
-                                    onChange={setName}
-                                    onFocus={clearValidation}
-                                />
-                                {player.canRemove ? (
-                                    <div className="css-remove-container">
-                                        <img className="css-remove-button" src={remove} alt="" onClick={deletePlayer.bind(this, player.id)} />
-                                    </div>
-                                ) : null}
-                            </div>
-                        );
-                    })}
-                    {addButtonVisible && (
-                        <div className="css-add-player">
-                            <div className="css-add-container">
-                                <img className="css-add-button" src={add} alt="" onClick={addPlayer.bind(this)} />
-                            </div>
-                        </div>
-                    )}
+                <div className="css-add-player">
+                    <button className="css-basis-button" onClick={addPlayer} disabled={!addButtonVisible}>
+                        <i class="fas fa-user-plus" />
+                        <span className="add-user-text">Добавить</span>
+                    </button>
                 </div>
-                <div className="css-players-validation">
-                    {validationMessages.map((validationMessage, index) => (
-                        <div className="css-validation" key={index}>
-                            <div className="css-validation-icon-container">
-                                <img className="css-validation-icon" src={info} alt="" />
-                            </div>
-                            <div className="css-validation-text">{validationMessage}</div>
+                {players.map(player => {
+                    return (
+                        <div className="css-player-name" key={player.id}>
+                            <TextInput />
+                            {player.canRemove ? (
+                                <div className="css-remove-container">
+                                    <i class="fas fa-user-times" />
+                                </div>
+                            ) : null}
                         </div>
-                    ))}
-                </div>
+                    );
+                })}
             </div>
         );
     }

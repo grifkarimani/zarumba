@@ -29,22 +29,22 @@ class Options extends React.Component {
     render() {
         const { clearValidation } = this.props;
         return (
-            <div className="css-options">
-                <div className="css-content">
-                    <div className="css-options-wrapper">
-                        <div className="css-players-list">
+            <div className="css-options-page">
+                <div className="css-form">
+                    <div className="input-group">
+                        <div className="left-pannel">
                             <Players clearValidation={clearValidation} />
                         </div>
-                        <div className="css-start-options-list">
+                        <div className="right-pannel">
                             <StartOptions />
                         </div>
                     </div>
-                </div>
 
-                <div className="css-controls">
-                    <Link to="/game" className="css-button" onClick={this.handleStart.bind(this)}>
-                        Старт
-                    </Link>
+                    <div className="contol-group">
+                        <button className="css-basis-button" onClick={this.handleStart.bind(this)}>
+                            Старт
+                        </button>
+                    </div>
                 </div>
             </div>
         );

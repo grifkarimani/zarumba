@@ -1,292 +1,295 @@
 @mixin placeholder {
-  &::-webkit-input-placeholder {
-    @content;
-  }
-  &:-moz-placeholder {
-    @content;
-  }
-  &::-moz-placeholder {
-    @content;
-  }
-  &:-ms-input-placeholder {
-    @content;
-  }
+    &::-webkit-input-placeholder {
+        @content;
+    }
+    &:-moz-placeholder {
+        @content;
+    }
+    &::-moz-placeholder {
+        @content;
+    }
+    &:-ms-input-placeholder {
+        @content;
+    }
 }
 .css-pass-recovery-link {
-  margin-top: 40px;
-  text-align: right;
-  .css-link {
-    color: #8a8a8a;
-    text-decoration: none;
-    font-size: 20px;
-    .css-icon {
-      margin-right: 8px;
+    margin-top: 40px;
+    text-align: right;
+    .css-link {
+        color: #8a8a8a;
+        text-decoration: none;
+        font-size: 20px;
+        .css-icon {
+            margin-right: 8px;
+        }
+        &:hover {
+            text-decoration: underline;
+        }
     }
-    &:hover {
-      text-decoration: underline;
-    }
-  }
 }
 .css-link {
-  color: #8a8a8a;
-  text-decoration: none;
-  &.disabled {
-    color: #d2d2d2;
-  }
+    color: #8a8a8a;
+    text-decoration: none;
+    &.disabled {
+        color: #d2d2d2;
+    }
 }
 .viewport {
-  min-width: 1300px;
+    min-width: 1300px;
 }
 .css-app {
-  height: 100vh;
-  .css-header {
-    height: 80px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    background-color: $mainBackground;
-    box-shadow: 4px 4px 6px 0px #cecece;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 10px;
-    z-index: 200;
-    .css-logo {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      .css-loog-image {
-        width: 50px;
-        height: 50px;
-      }
-    }
-    .css-header-content {
-      flex-grow: 1;
-      padding: 16px;
-      .css-header-info {
-        .css-marker-container {
-          display: flex;
-          justify-content: flex-start;
-          align-items: baseline;
-          .css-marker-title {
-            font-size: 20px;
-          }
-          .css-marker-value {
-            font-size: 26px;
-            margin-left: 10px;
-          }
+    height: 100vh;
+    .css-header {
+        height: 80px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        background-color: $mainBackground;
+        box-shadow: 4px 4px 6px 0px #cecece;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 10px;
+        z-index: 200;
+        .css-logo {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .css-loog-image {
+                width: 50px;
+                height: 50px;
+            }
         }
-      }
-      .css-navigation {
-      }
+        .css-header-content {
+            flex-grow: 1;
+            padding: 16px;
+            .css-header-info {
+                .css-marker-container {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: baseline;
+                    .css-marker-title {
+                        font-size: 20px;
+                    }
+                    .css-marker-value {
+                        font-size: 26px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .css-navigation {
+            }
+        }
     }
-  }
-  .css-left-bar {
-    position: fixed;
-    left: 0;
-    bottom: 10px;
-    top: 80px;
-    width: 200px;
-    background-color: $mainBackground;
-    box-shadow: 4px 4px 6px 0px #cecece;
-    z-index: 200;
-  }
-  .componentContainer {
-    width: calc(100% - 40px);
-    margin: 20px;
-    height: calc(100% - 40px);
-    overflow: auto;
-  }
+    .css-left-bar {
+        position: fixed;
+        left: 0;
+        bottom: 10px;
+        top: 80px;
+        width: 200px;
+        background-color: $mainBackground;
+        box-shadow: 4px 4px 6px 0px #cecece;
+        z-index: 200;
+    }
+    .componentContainer {
+        width: calc(100% - 40px);
+        margin: 20px;
+        height: calc(100% - 40px);
+        overflow: auto;
+    }
 }
 .css-basis-button {
-  padding: 20px 30px;
-  border: 0.5px solid #dcdcdc;
-  background: none;
-  border-radius: 4px;
-  color: #8a8a8a;
-  font-size: 30px;
-  cursor: pointer;
-  transition: 0.3s;
-  min-width: 170px;
-  max-width: 170px;
-  transition: 0.2s;
-  &:focus {
-    outline: none;
-  }
-  &:hover {
-    box-shadow: $_shadow;
-  }
+    padding: 20px 30px;
+    border: 0.5px solid #dcdcdc;
+    background: none;
+    border-radius: 4px;
+    color: #8a8a8a;
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+    min-width: 170px;
+    max-width: 170px;
+    transition: 0.2s;
+    &:focus {
+        outline: none;
+    }
+    &:hover {
+        box-shadow: $_shadow;
+    }
 }
 .css-text-input-wrapper {
-  position: relative;
-  .css-icon {
-    position: absolute;
-    font-size: 24px;
-    width: 50px;
-    height: calc(100% - 30px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: $_mainTextColor;
-  }
-  .css-inside {
-    left: 0;
-  }
-  .css-pass {
-    right: 0;
-    cursor: pointer;
-  }
-  .css-text-input {
-    width: 100%;
-    padding: 14px 14px 14px 50px;
-    font-size: 30px;
-    border-radius: 4px;
-    border: 1px solid $_mainBorderColor;
-    color: $_mainTextColor;
-    transition: 0.2s;
-    box-sizing: border-box;
-    @include placeholder {
-      color: $_ligthTextColor;
+    position: relative;
+    .css-icon {
+        position: absolute;
+        font-size: 24px;
+        width: 50px;
+        height: calc(100% - 30px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $_mainTextColor;
     }
-    &:focus {
-      border: 1px solid $_darkenBorderColor;
-      outline: none;
+    .css-inside {
+        left: 0;
     }
-    &.invalid {
-      box-shadow: inset 0 0 4px #ff00007d;
+    .css-pass {
+        right: 0;
+        cursor: pointer;
+    }
+    .css-text-input {
+        width: 100%;
+        padding: 14px 14px 14px 50px;
+        font-size: 30px;
+        border-radius: 4px;
+        border: 1px solid $_mainBorderColor;
+        color: $_mainTextColor;
+        transition: 0.2s;
+        box-sizing: border-box;
+        @include placeholder {
+            color: $_ligthTextColor;
+        }
+        &:focus {
+            border: 1px solid $_darkenBorderColor;
+            outline: none;
+        }
+        &.invalid {
+            box-shadow: inset 0 0 4px #ff00007d;
+        }
+    }
+    .input-validation {
+        height: 30px;
+        font-size: 16px;
+        text-align: right;
+        color: $_redText;
     }
     &.notEqual {
-      box-shadow: inset 0 0 4px $_lightBlueText;
+        // box-shadow: inset 0 0 4px $_lightBlueText;
+        .css-inside {
+            color: red;
+        }
     }
-  }
-  .input-validation {
-    height: 30px;
-    font-size: 16px;
-    text-align: right;
-    color: $_redText;
-  }
 }
 
 .css-main-area {
-  position: fixed;
-  top: 90px;
-  right: 10px;
-  bottom: 10px;
-  left: 210px;
-  border: 1px solid #e6e6e6;
+    position: fixed;
+    top: 90px;
+    right: 10px;
+    bottom: 10px;
+    left: 210px;
+    border: 1px solid #e6e6e6;
 }
 
 .css-controls {
-  display: flex;
-  justify-content: flex-end;
+    display: flex;
+    justify-content: flex-end;
 }
 .css-overlay-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .css-overlay {
     position: absolute;
     top: 0;
-    right: 0;
     left: 0;
+    right: 0;
     bottom: 0;
-    background-color: $_overlay;
-    opacity: 0.5;
-  }
-  .css-overlay-content {
-    z-index: 101;
-    min-width: 460px;
-    background-color: white;
-    border: 1px solid $_mainBorderColor;
-    border-radius: 8px;
-    padding: 40px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    .css-over-title {
-      font-size: 26px;
+    .css-overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background-color: $_overlay;
+        opacity: 0.5;
     }
-    .css-over-controls {
-      margin-top: 26px;
-      display: flex;
-      width: 100%;
-      justify-content: space-around;
-      align-items: center;
-      .css-button {
-        width: 40%;
-        padding: 16px;
-      }
+    .css-overlay-content {
+        z-index: 101;
+        min-width: 460px;
+        background-color: white;
+        border: 1px solid $_mainBorderColor;
+        border-radius: 8px;
+        padding: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .css-over-title {
+            font-size: 26px;
+        }
+        .css-over-controls {
+            margin-top: 26px;
+            display: flex;
+            width: 100%;
+            justify-content: space-around;
+            align-items: center;
+            .css-button {
+                width: 40%;
+                padding: 16px;
+            }
+        }
     }
-  }
 }
 .css-form {
-  position: relative;
-  width: 540px;
-  min-width: 540px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  border: 1px solid #e6e6e6;
-  height: 90%;
-  padding: 20px;
-  margin: 0 20px;
-  box-sizing: border-box;
-  box-shadow: 18px 18px 30px 0px #abbace;
-  opacity: 1;
-  .css-form-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    background-color: $_mainTextColor;
-    z-index: 100;
-    opacity: 0.1;
-  }
-  .input-group {
-    flex-direction: column;
-    flex-basis: 80%;
-  }
-  .contol-group {
+    position: relative;
+    width: 540px;
+    min-width: 540px;
     display: flex;
-    .css-basis-button {
-      min-width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #e6e6e6;
+    height: 90%;
+    padding: 20px;
+    margin: 0 20px;
+    box-sizing: border-box;
+    box-shadow: 18px 18px 30px 0px #abbace;
+    opacity: 1;
+    .css-form-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: $_mainTextColor;
+        z-index: 100;
+        opacity: 0.1;
     }
-  }
-  &.disabled {
-    opacity: 0.5;
-    box-shadow: 0 0 0 0px #ffffff;
-  }
+    .input-group {
+        flex-direction: column;
+        flex-basis: 80%;
+    }
+    .contol-group {
+        display: flex;
+        .css-basis-button {
+            min-width: 100%;
+        }
+    }
+    &.disabled {
+        opacity: 0.5;
+        box-shadow: 0 0 0 0px #ffffff;
+    }
 }
 .css-infoPage {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  .info-block {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    width: 40%;
-    min-width: 460px;
-    border: 1px solid $_mainBorderColor;
-    border-radius: 4px;
-    box-shadow: 18px 18px 30px 0px #abbace;
-    padding: 30px;
-    box-sizing: border-box;
-    .fas {
-      font-size: 70px;
-      margin-right: 30px;
-      color: $_lightBlueText;
+    height: 100%;
+    .info-block {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 40%;
+        min-width: 460px;
+        border: 1px solid $_mainBorderColor;
+        border-radius: 4px;
+        box-shadow: 18px 18px 30px 0px #abbace;
+        padding: 30px;
+        box-sizing: border-box;
+        .fas {
+            font-size: 70px;
+            margin-right: 30px;
+            color: $_lightBlueText;
+        }
+        .text {
+            font-size: 22px;
+        }
     }
-    .text {
-      font-size: 22px;
-    }
-  }
 }

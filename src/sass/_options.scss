@@ -1,118 +1,29 @@
-.css-options {
-    padding: 20px;
+.css-options-page {
     display: flex;
+    justify-content: center;
     flex-direction: column;
+    align-items: center;
     height: 100%;
-    box-sizing: border-box;
-    .css-content {
-        height: 92%;
-        display: flex;
-        flex-direction: column;
-        .css-options-wrapper {
+    .css-form {
+        width: 80%;
+        min-width: 1000px;
+        min-height: 560px;
+        .input-group {
+            flex-basis: 86%;
             display: flex;
+            flex-direction: row;
             justify-content: space-between;
-            height: 100%;
-            .css-players-list {
-                width: 30%;
-                border-right: 1px solid grey;
-                padding: 30px;
-                box-sizing: border-box;
-                .css-players {
-                    display: flex;
-                    flex-direction: column;
-                    height: 100%;
-                    justify-content: space-between;
-                    .css-text-input {
-                        width: 80%;
-                    }
-                }
+            .left-pannel {
+                min-width: 440px;
+                margin-right: 20px;
+                padding-right: 20px;
+                border-right: 0.5px solid #dcdcdc;
+                // border-bottom: 0.5px solid #dcdcdc;
             }
-            .css-start-options-list {
-                width: 68%;
-                border-left: 1px solid grey;
-                padding: 30px;
-                box-sizing: border-box;
+            .right-pannel {
             }
         }
-    }
-    .css-controls {
-        height: 8%;
-        justify-content: space-between;
-    }
-
-    .css-start-options-list {
-        .css-start-options {
-            // display: flex;
-            // justify-content: space-around;
-            .css-start-option {
-                // display: flex;
-                // justify-content: space-between;
-                margin-bottom: 12px;
-                .css-start-option-label {
-                    width: 150px;
-                    min-width: 120px;
-                }
-                .css-start-option-content {
-                    width: 100%;
-                    display: flex;
-                    align-items: center;
-                    .css-set-container {
-                        width: 40%;
-                        .css-set-container-controls {
-                            display: flex;
-                            justify-content: space-between;
-                            align-items: center;
-                            width: 40%;
-                        }
-                    }
-                    .css-start-option-content-item {
-                        font-size: 18px;
-                        display: inline-block;
-                        width: 200px;
-                        text-align: center;
-                        cursor: pointer;
-                        transition: 0.5s;
-                        &.selected {
-                            color: $_lightBlueText;
-                        }
-                        &.left {
-                            text-align: left;
-                        }
-                        &.right {
-                            text-align: left;
-                        }
-                    }
-                    .css-switch {
-                        min-width: 80px;
-                        text-align: center;
-                        margin-right: 20px;
-                    }
-                }
-                .css-controll-button {
-                    width: 26px;
-                    height: 26px;
-                    cursor: pointer;
-                }
-                .css-Ovalue {
-                    text-align: center;
-                    font-size: 24px;
-                    color: $_orangeText;
-                }
-            }
-        }
-        .ball-price-container {
-            display: flex;
-            justify-content: flex-end;
-            .css-text-input {
-                width: 66%;
-                color: orange;
-                font-size: 26px;
-                padding: 0;
-                &:focus {
-                    outline: none;
-                    box-shadow: none;
-                }
-            }
+        .contol-group {
         }
     }
 }

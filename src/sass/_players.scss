@@ -1,47 +1,48 @@
-.css-player-name {
-    margin-bottom: 20px;
-    display: flex;
-    align-items: center;
-    .css-remove-container {
-        margin-left: 8px;
-        display: flex;
-        align-items: center;
-        .css-remove-button {
-            width: 32px;
-            height: 32px;
-            cursor: pointer;
-        }
-    }
-}
-.css-add-player {
-    .css-add-container {
-        display: flex;
-        align-items: center;
-        .css-add-button {
-            width: 54px;
-            height: 54px;
-            cursor: pointer;
-        }
-    }
-}
-.css-players-validation {
-    .css-validation {
-        display: flex;
-        align-items: center;
-        background-color: #fff4f4;
-        margin-bottom: 8px;
-        padding-right: 8px;
-        .css-validation-icon-container {
-            display: flex;
-            margin-right: 20px;
-            .css-validation-icon {
-                width: 56px;
-                height: 56px;
+.css-players {
+    max-height: 100%;
+    overflow: auto;
+    .css-add-player {
+        margin-bottom: 6px;
+        .css-basis-button {
+            width: 100%;
+            max-width: unset;
+            color: $_lightBlueText;
+            .fas {
+                margin-right: 20px;
+            }
+            .add-user-text {
             }
         }
-        .css-validation-text {
-            color: #9d0000;
-            font-style: italic;
+    }
+    .css-player-name {
+        position: relative;
+        .css-text-input-wrapper {
+            .css-text-input {
+                padding: 10px 44px;
+                font-size: 20px;
+            }
+            .input-validation {
+                height: 20px;
+                font-size: 12px;
+            }
+            .css-icon {
+                height: calc(100% - 20px);
+            }
+        }
+        .css-remove-container {
+            position: absolute;
+            z-index: 100;
+            height: calc(100% - 20px);
+            right: 0;
+            top: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            color: $_mainTextColor;
+
+            font-size: 20px;
+            width: 50px;
         }
     }
 }
