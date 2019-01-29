@@ -3,6 +3,13 @@ import remove from "../../../../media/remove.svg";
 import add from "../../../../media/add.svg";
 
 class StartOption extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            position: "disabled"
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
     renderSetContainer() {
         const { setLabel, onIncrease, isSelected, optionValue, optionKey, setContainer, onReduce } = this.props;
         return isSelected ? (
@@ -16,20 +23,22 @@ class StartOption extends React.Component {
             </div>
         ) : null;
     }
+    handleClick() {
+        this.setState({
+            position: this.state.position === "disabled" ? "active" : "disabled"
+        });
+    }
     render() {
         const { className, mainLabel, isSelected, selectOption, optionKey, option1, option2, optionWithSetContainer, id } = this.props;
+        const { position } = this.state;
         return (
-            <div className={["css-start-option", className].join(" ")}>
-                <div className="css-start-option-content">
-                    <div className="css-start-option-label">{mainLabel}</div>
-                    <div className="css-switch">
-                        <label className="switch" htmlFor={id}>
-                            <input type="checkbox" checked={isSelected} onChange={selectOption.bind(this, optionKey, !isSelected)} id={id} />
-                            <span className="slider round" />
-                        </label>
-                    </div>
-                    <div className={["css-start-option-content-item left", isSelected ? "selected" : ""].join(" ")}>{isSelected ? option1 : option2}</div>
-                    {optionWithSetContainer ? this.renderSetContainer() : null}
+            <div className={["css-start-option", className, position].join(" ")} onClick={this.handleClick}>
+                <div className="description">
+                    <div className="header">{this.props[position].header}</div>
+                    <div className="text">{this.props[position].text}</div>
+                </div>
+                <div className="icon-container">
+                    <i className={`css-icon fab ${this.props.icon} ${position}`} />
                 </div>
             </div>
         );

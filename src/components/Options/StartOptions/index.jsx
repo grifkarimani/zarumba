@@ -23,6 +23,7 @@ class StartOptions extends React.Component {
                 <div className="css-marker-wrapper" />
                 {optionsArray.map(option => (
                     <StartOption
+                        {...option}
                         id={option.id}
                         mainLabel={option.mainLabel}
                         key={option.id}

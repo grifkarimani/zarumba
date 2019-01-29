@@ -5,66 +5,80 @@ const initialState = {
     markerName: "",
     options: {
         reverse: {
+            order: 0,
             id: uuidv4(),
-            mainLabel: "Реверс:",
-            isSelected: false,
+            icon: "fa-rev",
             className: "Reverce",
-            yes: "Аверс + Реверс",
-            no: "Аверс"
+            active: {
+                header: "Игра с реверсом",
+                text: "После аверса автоматически начинается реверс (порядок игроков сохраняется)"
+            },
+            disabled: {
+                header: "Игра без реверса",
+                text:
+                    "После аверса игра заканчивается. Выводится статистика. В пользовательском режиме статистика и лог отправляются на электронную почту пользователю."
+            }
         },
         payment: {
+            order: 0,
             id: uuidv4(),
-            mainLabel: "Оплата света:",
-            isSelected: false,
+            icon: "fa-rev",
             className: "Payment",
-            yes: "Минусовые",
-            no: "На всех"
-        },
-        random: {
-            id: uuidv4(),
-            mainLabel: "Очередность игроков:",
-            isSelected: false,
-            className: "Random",
-            yes: "Случайный порядок",
-            no: "По регистрации"
-        },
-        moneyBall: {
-            id: uuidv4(),
-            mainLabel: "Бонусный шар:",
-            isSelected: false,
-            className: "onlyYellow",
-            yes: "Бонусный за:",
-            no: "Нет",
-            optionValue: 2,
-            yellowPoints: 1,
-            setContainer: {
-                step: 1
-            }
-        },
-        lastBall: {
-            id: uuidv4(),
-            mainLabel: "Последний шар:",
-            isSelected: false,
-            className: "lastBall",
-            yes: "Последний за:",
-            no: "Номинал",
-            optionValue: 1,
-            setContainer: {
-                step: 1
-            }
-        },
-        customBallPrice: {
-            id: uuidv4(),
-            mainLabel: "Цена шара:",
-            isSelected: false,
-            className: "ballPrice",
-            yes: "За шар:",
-            no: "Игра на очки",
-            optionValue: 1,
-            setContainer: {
-                step: 0.5
+            active: {
+                header: "Всет на всех",
+                text: "Дружеский вариант встречи, когда стоимость игровоговремени делится равными долями среди участников встречи."
+            },
+            disabled: {
+                header: "Свет оплачивают минусовые",
+                text:
+                    "Оплата игрового времени ложится на плечи игроков, закончивших встречу/аверс/реверс с отрицательным результатом. Дополнительно оговаривается участие в оплате света игроков, которые закончили с нулевым результатом"
             }
         }
+        // random: {
+        //     id: uuidv4(),
+        //     mainLabel: "Очередность игроков:",
+        //     isSelected: false,
+        //     className: "Random",
+        //     yes: "Случайный порядок",
+        //     no: "По регистрации"
+        // },
+        // moneyBall: {
+        //     id: uuidv4(),
+        //     mainLabel: "Бонусный шар:",
+        //     isSelected: false,
+        //     className: "onlyYellow",
+        //     yes: "Бонусный за:",
+        //     no: "Нет",
+        //     optionValue: 2,
+        //     yellowPoints: 1,
+        //     setContainer: {
+        //         step: 1
+        //     }
+        // },
+        // lastBall: {
+        //     id: uuidv4(),
+        //     mainLabel: "Последний шар:",
+        //     isSelected: false,
+        //     className: "lastBall",
+        //     yes: "Последний за:",
+        //     no: "Номинал",
+        //     optionValue: 1,
+        //     setContainer: {
+        //         step: 1
+        //     }
+        // },
+        // customBallPrice: {
+        //     id: uuidv4(),
+        //     mainLabel: "Цена шара:",
+        //     isSelected: false,
+        //     className: "ballPrice",
+        //     yes: "За шар:",
+        //     no: "Игра на очки",
+        //     optionValue: 1,
+        //     setContainer: {
+        //         step: 0.5
+        //     }
+        // }
     },
     // withReverce: true,
     // payLoosers: true,
