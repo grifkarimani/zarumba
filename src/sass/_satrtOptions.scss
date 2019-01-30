@@ -15,26 +15,58 @@
         transition: 0.3s;
         display: flex;
         .description {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
             .header {
+                display: flex;
+                align-items: center;
                 color: $_mainTextColor;
                 font-size: 20px;
-                margin-bottom: 4px;
+                padding-bottom: 4px;
+                border-bottom: 0.5px solid #dcdcdc;
+                .header-icon-container {
+                    width: 40px;
+                    height: 40px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 0.5px solid $_mainBorderColor;
+                    border-radius: 4px;
+                    margin-right: 10px;
+                }
+                .css-header-text-container {
+                }
             }
-            .text {
+            .setContainer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top: 14px;
+                .setContainer-title {
+                    font-size: 18px;
+                    color: orange;
+                    margin-right: 12px;
+                }
+                .setContainer-controls {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: calc(100% - 20px);
+                    width: 50%;
+                    .setContainer-value {
+                        font-size: 26px;
+                        font-weight: 600;
+                        color: white;
+                        min-width: 130px;
+                        text-align: center;
+                        background-color: #93d6ff;
+                    }
+                    .css-icon {
+                        font-size: 40px;
+                    }
+                }
             }
         }
-        .icon-container {
-            width: 144px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            .css-icon {
-                font-size: 60px;
-            }
-        }
-
-        // &:hover {
-        //     box-shadow: 0px 0px 16px #cecece;
-        // }
     }
 }

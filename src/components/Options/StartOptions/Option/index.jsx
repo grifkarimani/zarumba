@@ -34,11 +34,28 @@ class StartOption extends React.Component {
         return (
             <div className={["css-start-option", className, position].join(" ")} onClick={this.handleClick}>
                 <div className="description">
-                    <div className="header">{this.props[position].header}</div>
-                    <div className="text">{this.props[position].text}</div>
-                </div>
-                <div className="icon-container">
-                    <i className={`css-icon fab ${this.props.icon} ${position}`} />
+                    <div className="header">
+                        <div className="header-icon-container">
+                            <i className={`css-icon fas ${this.props[position].icon}`} />
+                        </div>
+                        <div className="css-header-text-container">{this.props[position].header}</div>
+                    </div>
+
+                    {position === "disabled" && <div className="text">{this.props[position].text}</div>}
+                    {position === "active" && this.props.setContainer && (
+                        <div className="setContainer">
+                            {/* <div className="setContainer-title">{this.props.setContainer.setLabel}</div> */}
+                            <div className="setContainer-controls">
+                                <div className="setContainer-plus">
+                                    <i className={`css-icon fas fa-plus-circle`} />
+                                </div>
+                                <div className="setContainer-value">{this.props.setContainer.defaultValue}</div>
+                                <div className="setContainer-minus">
+                                    <i className={`css-icon fas fa-minus-circle`} />
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
         );

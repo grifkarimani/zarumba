@@ -7,31 +7,69 @@ const initialState = {
         reverse: {
             order: 0,
             id: uuidv4(),
-            icon: "fa-rev",
             className: "Reverce",
-            active: {
+            disabled: {
+                icon: "fa-sync",
                 header: "Игра с реверсом",
                 text: "После аверса автоматически начинается реверс (порядок игроков сохраняется)"
             },
-            disabled: {
+            active: {
+                icon: "fa-redo",
                 header: "Игра без реверса",
                 text:
                     "После аверса игра заканчивается. Выводится статистика. В пользовательском режиме статистика и лог отправляются на электронную почту пользователю."
             }
         },
-        payment: {
-            order: 0,
+        lightPayment: {
+            order: 10,
             id: uuidv4(),
-            icon: "fa-rev",
-            className: "Payment",
-            active: {
-                header: "Всет на всех",
+
+            className: "lightPayment",
+            disabled: {
+                icon: "fa-users",
+                header: "Свет на всех",
                 text: "Дружеский вариант встречи, когда стоимость игровоговремени делится равными долями среди участников встречи."
             },
-            disabled: {
+            active: {
+                icon: "fa-wheelchair",
                 header: "Свет оплачивают минусовые",
                 text:
                     "Оплата игрового времени ложится на плечи игроков, закончивших встречу/аверс/реверс с отрицательным результатом. Дополнительно оговаривается участие в оплате света игроков, которые закончили с нулевым результатом"
+            }
+        },
+        random: {
+            order: 20,
+            id: uuidv4(),
+
+            className: "Random",
+            disabled: {
+                icon: "fa-random",
+                header: "Случайный порядок",
+                text: "Перед началом игры происходит случайная жеребъевка очередности."
+            },
+            active: {
+                icon: "fa-long-arrow-alt-right",
+                header: "В очерередности регистрации",
+                text: "Порядок игроков будет таким, каков порядок внесения игроков в форму для участия."
+            }
+        },
+        moneyBall: {
+            order: 30,
+            id: uuidv4(),
+            className: "moneyBall",
+            disabled: {
+                icon: "fa-minus-circle",
+                header: "Без бонусного шара",
+                text: "Игра одним битком"
+            },
+            active: {
+                icon: "fa-plus-circle",
+                header: "С бонусным шаром",
+                text: "Бонусный шар дает дополнительные очки при сыгрываниее его/от него"
+            },
+            setContainer: {
+                setLabel: "Бонусный за:",
+                defaultValue: 1
             }
         }
         // random: {

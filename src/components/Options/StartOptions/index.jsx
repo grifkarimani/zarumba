@@ -36,7 +36,6 @@ class StartOptions extends React.Component {
                         option2={option.no}
                         onIncrease={onIncrease}
                         onReduce={onReduce}
-                        setContainer={option.setContainer ? option.setContainer : {}}
                         optionValue={option.optionValue ? option.optionValue : 0}
                     />
                 ))}
