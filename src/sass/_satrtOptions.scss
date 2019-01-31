@@ -25,6 +25,7 @@
                 font-size: 20px;
                 padding-bottom: 4px;
                 border-bottom: 0.5px solid #dcdcdc;
+                cursor: pointer;
                 .header-icon-container {
                     width: 40px;
                     height: 40px;
@@ -37,6 +38,16 @@
                 }
                 .css-header-text-container {
                 }
+            }
+            .text {
+                font-size: 14px;
+                line-height: 14px;
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: column;
+                flex-grow: 1;
+                justify-content: center;
+                align-items: center;
             }
             .setContainer {
                 display: flex;

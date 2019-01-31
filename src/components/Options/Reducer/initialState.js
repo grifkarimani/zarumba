@@ -8,115 +8,106 @@ const initialState = {
             order: 0,
             id: uuidv4(),
             className: "Reverce",
+            hint:
+                "Играть можно только Аверс (1,2,3), так и Аверс + Реверс (1,2,3 а потом 3,2,1). Если игроков более 3, то играется все равно один аверс, а не все возможные вариантв перестановок. ",
             disabled: {
-                icon: "fa-sync",
-                header: "Игра с реверсом",
-                text: "После аверса автоматически начинается реверс (порядок игроков сохраняется)"
+                icon: "fas fa-sync-alt",
+                header: "Игра с реверсом"
             },
             active: {
-                icon: "fa-redo",
-                header: "Игра без реверса",
-                text:
-                    "После аверса игра заканчивается. Выводится статистика. В пользовательском режиме статистика и лог отправляются на электронную почту пользователю."
-            }
+                icon: "fas fa-redo-alt",
+                header: "Игра без реверса"
+            },
+            setContainer: null
         },
         lightPayment: {
             order: 10,
             id: uuidv4(),
-
+            hint:
+                "Если 'Всет на всех', то по окончании игры игровое время оплачивается всеми игроками в равных долях. Если же выбрана опция 'Свет оплачивают минусовые', то оплачивать время должны те игроки, которые в итоге имеют отрицательное количество очков.",
             className: "lightPayment",
             disabled: {
-                icon: "fa-users",
-                header: "Свет на всех",
-                text: "Дружеский вариант встречи, когда стоимость игровоговремени делится равными долями среди участников встречи."
+                icon: "fas fa-users",
+                header: "Свет на всех"
             },
             active: {
-                icon: "fa-wheelchair",
-                header: "Свет оплачивают минусовые",
-                text:
-                    "Оплата игрового времени ложится на плечи игроков, закончивших встречу/аверс/реверс с отрицательным результатом. Дополнительно оговаривается участие в оплате света игроков, которые закончили с нулевым результатом"
-            }
+                icon: "fas fa-wheelchair",
+                header: "Свет оплачивают минусовые"
+            },
+            setContainer: null
         },
         random: {
             order: 20,
             id: uuidv4(),
-
+            hint:
+                "Очередность ходов можно оставить в том порядке, в каком игроки решистрировались на встречу, а можно предоставить право решать 'кто за кем' хозяйке-судьбе",
             className: "Random",
             disabled: {
-                icon: "fa-random",
-                header: "Случайный порядок",
-                text: "Перед началом игры происходит случайная жеребъевка очередности."
+                icon: "fas fa-random",
+                header: "Случайный порядок"
             },
             active: {
-                icon: "fa-long-arrow-alt-right",
-                header: "В очерередности регистрации",
-                text: "Порядок игроков будет таким, каков порядок внесения игроков в форму для участия."
-            }
+                icon: "fas fa-long-arrow-alt-right",
+                header: "В очерередности регистрации"
+            },
+            setContainer: null
         },
         moneyBall: {
             order: 30,
             id: uuidv4(),
+            hint:
+                "Бонусный шар, это дополнительный шар на столе другого цвета, при сыгрывании которого/от которого игроку засчитывается больше очков (столько, сколько этот шар стоит по договоренности)",
             className: "moneyBall",
             disabled: {
-                icon: "fa-minus-circle",
-                header: "Без бонусного шара",
-                text: "Игра одним битком"
+                icon: "fas fa-times-circle",
+                header: "Без бонусного шара"
             },
             active: {
-                icon: "fa-plus-circle",
-                header: "С бонусным шаром",
-                text: "Бонусный шар дает дополнительные очки при сыгрываниее его/от него"
+                icon: "fas fa-plus-circle",
+                header: "С бонусным шаром"
             },
             setContainer: {
-                setLabel: "Бонусный за:",
-                defaultValue: 1
+                defaultValue: 1,
+                step: 1
+            }
+        },
+        lastBallPoints: {
+            order: 40,
+            id: uuidv4(),
+            hint:
+                "Для дополнительного зашквара в конце партии, можно определить правило, которое гласит: 'мол последний шар имеет коэффициент к своему номиналу'. Например 2.",
+            className: "lastBallPoints",
+            disabled: {
+                icon: "fas fa-flag-checkered",
+                header: "Последний шар за номинал."
+            },
+            active: {
+                icon: "fas fa-flag-checkered",
+                header: "Последний шар за:"
+            },
+            setContainer: {
+                defaultValue: 2,
+                step: 1
+            }
+        },
+        customBallPrice: {
+            order: 50,
+            id: uuidv4(),
+            hint: "Можно не только на очки, можно так же на щелбаны, желания или яблоки, к примеру...",
+            className: "customBallPrice",
+            disabled: {
+                icon: "fas fa-handshake",
+                header: "Дружеская катанина"
+            },
+            active: {
+                icon: "fas fa-apple-alt",
+                header: "Игра с мотивацией"
+            },
+            setContainer: {
+                defaultValue: 0.5,
+                step: 0.5
             }
         }
-        // random: {
-        //     id: uuidv4(),
-        //     mainLabel: "Очередность игроков:",
-        //     isSelected: false,
-        //     className: "Random",
-        //     yes: "Случайный порядок",
-        //     no: "По регистрации"
-        // },
-        // moneyBall: {
-        //     id: uuidv4(),
-        //     mainLabel: "Бонусный шар:",
-        //     isSelected: false,
-        //     className: "onlyYellow",
-        //     yes: "Бонусный за:",
-        //     no: "Нет",
-        //     optionValue: 2,
-        //     yellowPoints: 1,
-        //     setContainer: {
-        //         step: 1
-        //     }
-        // },
-        // lastBall: {
-        //     id: uuidv4(),
-        //     mainLabel: "Последний шар:",
-        //     isSelected: false,
-        //     className: "lastBall",
-        //     yes: "Последний за:",
-        //     no: "Номинал",
-        //     optionValue: 1,
-        //     setContainer: {
-        //         step: 1
-        //     }
-        // },
-        // customBallPrice: {
-        //     id: uuidv4(),
-        //     mainLabel: "Цена шара:",
-        //     isSelected: false,
-        //     className: "ballPrice",
-        //     yes: "За шар:",
-        //     no: "Игра на очки",
-        //     optionValue: 1,
-        //     setContainer: {
-        //         step: 0.5
-        //     }
-        // }
     },
     // withReverce: true,
     // payLoosers: true,
