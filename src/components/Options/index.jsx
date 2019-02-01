@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link, withRouter } from "react-router-dom";
 import Players from "./Players/index";
 import StartOptions from "./StartOptions/index";
+import { Scrollbars } from "react-custom-scrollbars";
 
 class Options extends React.Component {
     constructor(props) {
@@ -36,7 +37,9 @@ class Options extends React.Component {
                             <Players clearValidation={clearValidation} />
                         </div>
                         <div className="right-pannel">
-                            <StartOptions />
+                            <Scrollbars autoHide autoHideTimeout={500}>
+                                <StartOptions />
+                            </Scrollbars>
                         </div>
                     </div>
 

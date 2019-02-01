@@ -25,6 +25,7 @@
                 font-size: 20px;
                 padding-bottom: 4px;
                 border-bottom: 0.5px solid #dcdcdc;
+                color: $_lightBlueText;
                 cursor: pointer;
                 .header-icon-container {
                     width: 40px;
@@ -54,11 +55,6 @@
                 justify-content: center;
                 align-items: center;
                 padding-top: 14px;
-                .setContainer-title {
-                    font-size: 18px;
-                    color: orange;
-                    margin-right: 12px;
-                }
                 .setContainer-controls {
                     display: flex;
                     justify-content: space-between;
@@ -75,9 +71,13 @@
                     }
                     .css-icon {
                         font-size: 40px;
+                        cursor: pointer;
                     }
                 }
             }
+        }
+        &:hover {
+            box-shadow: 0 0 16px #cecece;
         }
     }
 }

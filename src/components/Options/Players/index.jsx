@@ -1,14 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import remove from "../../../media/remove.svg";
-import add from "../../../media/add.svg";
-import info from "../../../media/info.svg";
-import TextInput from "../../Input";
-// import Marker from "../StartOptions/Marker";
-
 import { addNewPlayer, removePlayer, setPlayerName } from "../Actions/actions";
-
+import Player from "./Player";
 class Players extends React.Component {
     render() {
         const {
@@ -29,17 +22,8 @@ class Players extends React.Component {
                         <span className="add-user-text">Добавить</span>
                     </button>
                 </div>
-                {players.map(player => {
-                    return (
-                        <div className="css-player-name" key={player.id}>
-                            <TextInput />
-                            {player.canRemove ? (
-                                <div className="css-remove-container">
-                                    <i class="fas fa-user-times" />
-                                </div>
-                            ) : null}
-                        </div>
-                    );
+                {players.map((player, i) => {
+                    return <Player {...player} key={i} />;
                 })}
             </div>
         );
