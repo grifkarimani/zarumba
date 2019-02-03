@@ -1,48 +1,47 @@
 .css-players {
-    max-height: 100%;
-    overflow: auto;
-    .css-add-player {
-        margin-bottom: 6px;
-        .css-basis-button {
-            width: 100%;
-            max-width: unset;
-            color: $_lightBlueText;
-            .fas {
-                margin-right: 20px;
-            }
-            .add-user-text {
-            }
-        }
+  max-height: 100%;
+  overflow: auto;
+  .css-add-player {
+    margin-bottom: 6px;
+    .css-basis-button {
+      width: 100%;
+      max-width: unset;
+      .fas {
+        margin-right: 20px;
+      }
+      .add-user-text {
+      }
     }
-    .css-player-name {
-        position: relative;
-        .css-text-input-wrapper {
-            .css-text-input {
-                padding: 10px 44px;
-                font-size: 20px;
-            }
-            .input-validation {
-                height: 20px;
-                font-size: 12px;
-            }
-            .css-icon {
-                height: calc(100% - 20px);
-            }
-        }
-        .css-remove-container {
-            position: absolute;
-            z-index: 100;
-            height: calc(100% - 20px);
-            right: 0;
-            top: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            color: $_mainTextColor;
+  }
+  .css-player-name {
+    position: relative;
+    .css-text-input-wrapper {
+      .css-text-input {
+        padding: 10px 44px;
+        font-size: 20px;
+      }
+      .input-validation {
+        height: 20px;
+        font-size: 12px;
+      }
+      .css-icon {
+        height: calc(100% - 20px);
+      }
+    }
+    .css-remove-container {
+      position: absolute;
+      z-index: 100;
+      height: calc(100% - 20px);
+      right: 0;
+      top: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      color: $_mainTextColor;
 
-            font-size: 20px;
-            width: 50px;
-        }
+      font-size: 20px;
+      width: 50px;
     }
+  }
 }

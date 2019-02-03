@@ -1,33 +1,88 @@
 .css-options-page {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    .css-form {
-        width: 80%;
-        min-width: 1000px;
-        min-height: 560px;
-        .input-group {
-            flex-basis: 86%;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            .left-pannel {
-                min-width: 440px;
-                margin-right: 20px;
-                padding-right: 20px;
-                border-right: 0.5px solid #dcdcdc;
-                // border-bottom: 0.5px solid #dcdcdc;
-            }
-            .right-pannel {
-                width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  .css-form {
+    width: 80%;
+    min-width: 1000px;
+    min-height: 560px;
+    .input-group {
+      flex-basis: 86%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .left-pannel {
+        min-width: 440px;
+        margin-right: 20px;
+        padding-right: 20px;
+        border-right: 0.5px solid #dcdcdc;
+        // border-bottom: 0.5px solid #dcdcdc;
+      }
+      .right-pannel {
+        width: 100%;
 
-                min-height: 100%;
-                overflow: auto;
-            }
-        }
-        .contol-group {
-        }
+        min-height: 100%;
+        overflow: auto;
+      }
     }
+    .contol-group {
+    }
+  }
+}
+.css-checkList {
+  .ant-modal-content {
+    .ant-modal-header {
+      padding: 20px 28px;
+      .ant-modal-title {
+        color: $_lightBlueText;
+        font-size: 28px;
+      }
+    }
+    .ant-modal-body {
+      .css-checklist {
+        display: flex;
+        font-size: 22px;
+        .players {
+          margin-right: 24px;
+          padding-right: 20px;
+          display: flex;
+          border-right: 0.5px solid $_mainBorderColor;
+          .title {
+            margin-right: 20px;
+            color: $_lightBlueText;
+          }
+          .playersList {
+          }
+        }
+        .options {
+          .checkList-option {
+            display: flex;
+            margin-bottom: 10px;
+            align-items: center;
+            .header-icon-container {
+              width: 40px;
+              height: 40px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              border: 0.5px solid $_lightBlueText;
+              border-radius: 4px;
+              margin-right: 10px;
+              .css-icon {
+                color: $_lightBlueText;
+              }
+            }
+            .css-header-text-container {
+              display: flex;
+              .text {
+                margin-right: 12px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
