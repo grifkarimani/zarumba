@@ -12,9 +12,13 @@ import { setBall, setBull, setWhite, setYellow, setRed, setLast, stratReverce, s
 
 class Game extends React.Component {
     componentDidMount() {
-        let players = this.props.OptionsReducer.players.map(player => {
-            return {
-                id: player.id,
+        let playersArray = [];
+        let players = this.props.OptionsReducer.players;
+        for (let key in players) {
+            let player = players[key];
+            playersArray.push({
+                id: key,
+                ...player,
                 name: player.name,
                 position: Math.floor(Math.random() * 10001),
                 current: 0,
@@ -23,12 +27,12 @@ class Game extends React.Component {
                 totalReds: 0,
                 totalYellows: 0,
                 tottalBulls: 0
-            };
-        });
+            });
+        }
         if (this.props.isRandom) {
             players.sort((a, b) => a.position - b.position);
         }
-        this.props.setPlayers(players);
+        this.props.setPlayers(playersArray);
     }
     playersWithBulls(players) {
         let damages = [];
@@ -66,73 +70,74 @@ class Game extends React.Component {
         let whitesArr = new Array(15 - (GameReducer.whites > 15 ? 15 : GameReducer.whites)).fill(0);
         return (
             <div className="css-game">
-                <div className="css-body">
-                    {/* <div className="css-leftSide-bar" style={{ border: "1px solid green" }}>
-                        <div className="css-info">
-                            <Conditions />
-                        </div>
-                        {whitesArr.length > 0 && (
-                            <div className="css-total-whites">
-                                {whitesArr.map((ball, index) => (
-                                    <div key={index} className="whiteBallItem" />
-                                ))}
-                            </div>
-                        )}
-                        <div className="css-timer" />
-                    </div> */}
-                    <div className="css-center-block" style={{ border: "1px solid red" }}>
-                        <div className="css-main">
-                            <div className="css-players-grid">
-                                {GameReducer.players.map(player => {
-                                    return (
-                                        <Player
-                                            key={player.id}
-                                            {...player}
-                                            handleBall={handleBall}
-                                            isWhitesAre={whitesArr.length > 0}
-                                            whitesArr={whitesArr}
-                                            handleBull={handleBull}
-                                            handleWhiteBall={handleWhiteBall}
-                                            handleYellowBall={handleYellowBall}
-                                            handleRedBall={handleRedBall}
-                                            handleLastBall={handleLastBall}
-                                            setReverce={setReverce}
-                                            saveAvers={saveAvers}
-                                            saveReverce={saveReverce}
-                                            setPage={setPage}
-                                            gameOverMessage={gameOverMessage}
-                                        />
-                                    );
-                                })}
-                            </div>
-                            <div className="css-main-block-footer">
-                                <div className="css-bull">
-                                    {bulls.map((bull, index) => (
-                                        <div key={index} className="css-bull-item">
-                                            <div className="css-bull-item-name">{bull.name}</div>
-                                            <img className="css-bull-image" src={img} alt="" />
-                                        </div>
-                                    ))}
+                <div className="feftPart">
+                    <div className="css-body" style={{ border: "1px solid grey" }}>
+                        <div className="css-center-block">
+                            <div className="css-main">
+                                <div className="css-players-grid">
+                                    {GameReducer.players.map(player => {
+                                        return (
+                                            <Player
+                                                key={player.id}
+                                                {...player}
+                                                handleBall={handleBall}
+                                                isWhitesAre={whitesArr.length > 0}
+                                                whitesArr={whitesArr}
+                                                handleBull={handleBull}
+                                                handleWhiteBall={handleWhiteBall}
+                                                handleYellowBall={handleYellowBall}
+                                                handleRedBall={handleRedBall}
+                                                handleLastBall={handleLastBall}
+                                                setReverce={setReverce}
+                                                saveAvers={saveAvers}
+                                                saveReverce={saveReverce}
+                                                setPage={setPage}
+                                                gameOverMessage={gameOverMessage}
+                                            />
+                                        );
+                                    })}
                                 </div>
-                                {/* <button className="css-button">Откатить ход</button> */}
+                                <div className="css-main-block-footer">
+                                    <div className="css-bull">
+                                        {bulls.map((bull, index) => (
+                                            <div key={index} className="css-bull-item">
+                                                <div className="css-bull-item-name">{bull.name}</div>
+                                                <img className="css-bull-image" src={img} alt="" />
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <button className="css-button">Откатить ход</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="css-right-bar" style={{ display: "none" }}>
-                        <div className="css-statistic">
-                            {/* <GameStatistic /> */}
-                            {isReverce ? (
-                                <React.Fragment>
-                                    <PlayersStatistic
-                                        onlyYellow={onlyYellow}
-                                        players={results.avers.players}
-                                        totalBalls={results.avers.totalBalls}
-                                        totalBulls={results.avers.totalBulls}
-                                        whites={results.avers.whites}
-                                        reds={results.avers.reds}
-                                        yellows={results.avers.yellows}
-                                        title="Аверс"
-                                    />
+                        <div className="css-right-bar">
+                            <div className="css-statistic">
+                                {/* <GameStatistic /> */}
+                                <div className="css-game-statistic" />
+                                {isReverce ? (
+                                    <React.Fragment>
+                                        <PlayersStatistic
+                                            onlyYellow={onlyYellow}
+                                            players={results.avers.players}
+                                            totalBalls={results.avers.totalBalls}
+                                            totalBulls={results.avers.totalBulls}
+                                            whites={results.avers.whites}
+                                            reds={results.avers.reds}
+                                            yellows={results.avers.yellows}
+                                            title="Аверс"
+                                        />
+                                        <PlayersStatistic
+                                            onlyYellow={onlyYellow}
+                                            players={players}
+                                            totalBalls={totalBalls}
+                                            totalBulls={totalBulls}
+                                            whites={whites}
+                                            reds={reds}
+                                            yellows={yellows}
+                                            title="Реверс"
+                                        />
+                                    </React.Fragment>
+                                ) : (
                                     <PlayersStatistic
                                         onlyYellow={onlyYellow}
                                         players={players}
@@ -141,46 +146,37 @@ class Game extends React.Component {
                                         whites={whites}
                                         reds={reds}
                                         yellows={yellows}
-                                        title="Реверс"
+                                        title="Аверс"
                                     />
-                                </React.Fragment>
-                            ) : (
-                                <PlayersStatistic
-                                    onlyYellow={onlyYellow}
-                                    players={players}
-                                    totalBalls={totalBalls}
-                                    totalBulls={totalBulls}
-                                    whites={whites}
-                                    reds={reds}
-                                    yellows={yellows}
-                                    title="Аверс"
-                                />
-                            )}
-                        </div>
-                        <div className="css-log">
-                            <div className="css-logs-container">
-                                {GameReducer.log.map((it, index) => {
-                                    return it.ball == "bull" ? (
-                                        <div key={index} className="css-log-item">
-                                            <div className="css-log-time red">{it.time}</div>
-                                            <span>Игрок</span>
-                                            <div className="css-log-name">{it.name}</div>
-                                            <span>получил штраф</span>
-                                        </div>
-                                    ) : (
-                                        <div key={index} className="css-log-item">
-                                            <div className="css-log-time">{it.time}</div>
-                                            <span>Игрок</span>
-                                            <div className="css-log-name">{it.name}</div>
-                                            <div className={["css-log-ball"].join(" ")}>{it.message}</div>
-                                        </div>
-                                    );
-                                })}
+                                )}
+                            </div>
+                            <div className="css-log">
+                                <div className="css-logs-container">
+                                    {GameReducer.log.map((it, index) => {
+                                        return it.ball == "bull" ? (
+                                            <div key={index} className="css-log-item">
+                                                <div className="css-log-time red">{it.time}</div>
+                                                <span>Игрок</span>
+                                                <div className="css-log-name">{it.name}</div>
+                                                <span>получил штраф</span>
+                                            </div>
+                                        ) : (
+                                            <div key={index} className="css-log-item">
+                                                <div className="css-log-time">{it.time}</div>
+                                                <span>Игрок</span>
+                                                <div className="css-log-name">{it.name}</div>
+                                                <div className={["css-log-ball"].join(" ")}>{it.message}</div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <div className="css-footer" style={{ border: "1px solid grey" }} />
                 </div>
-                <div className="css-footer" />
+
+                <div className="css-rightSide" style={{ border: "1px solid grey" }} />
             </div>
         );
     }

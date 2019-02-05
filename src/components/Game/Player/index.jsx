@@ -213,7 +213,7 @@ class Player extends React.Component {
                             onClick={handleBull.bind(this, this.getOptionsFor("bull"))}
                             disabled={withMoneyBall ? false : !isWhitesAre}
                         >
-                            {/* <img className="css-bull-icon" src={img} alt="" /> */}Ш
+                            {/* <img className="css-bull-icon" src={img} alt="" /> */}
                         </button>
                     </div>
                     {!withMoneyBall && !isWhitesAre && (

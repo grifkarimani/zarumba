@@ -4,8 +4,7 @@
 
 .css-game {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    height: 100%;
     .css-total-whites {
         display: grid;
         grid-template-columns: 20% 20% 20% 20% 20%;
