@@ -5,6 +5,27 @@
 .css-game {
     display: flex;
     height: 100%;
+    width: 100%;
+    flex-direction: row;
+    .feftPart {
+        border: 1px solid green;
+        width: 70%;
+        display: flex;
+        flex-direction: column;
+        .css-body {
+            height: 70%;
+            width: 100%;
+        }
+        .css-footer {
+            height: 30%;
+            width: 100%;
+        }
+    }
+    .css-rightSide {
+        border: 1px solid green;
+        width: 30%;
+    }
+
     .css-total-whites {
         display: grid;
         grid-template-columns: 20% 20% 20% 20% 20%;

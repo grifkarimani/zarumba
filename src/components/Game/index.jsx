@@ -71,7 +71,7 @@ class Game extends React.Component {
         return (
             <div className="css-game">
                 <div className="feftPart">
-                    <div className="css-body" style={{ border: "1px solid grey" }}>
+                    <div className="css-body">
                         <div className="css-center-block">
                             <div className="css-main">
                                 <div className="css-players-grid">
@@ -97,7 +97,7 @@ class Game extends React.Component {
                                         );
                                     })}
                                 </div>
-                                <div className="css-main-block-footer">
+                                {/* <div className="css-main-block-footer">
                                     <div className="css-bull">
                                         {bulls.map((bull, index) => (
                                             <div key={index} className="css-bull-item">
@@ -107,10 +107,10 @@ class Game extends React.Component {
                                         ))}
                                     </div>
                                     <button className="css-button">Откатить ход</button>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
-                        <div className="css-right-bar">
+                        <div className="css-right-bar" style={{ display: "none" }}>
                             <div className="css-statistic">
                                 {/* <GameStatistic /> */}
                                 <div className="css-game-statistic" />
@@ -150,7 +150,7 @@ class Game extends React.Component {
                                     />
                                 )}
                             </div>
-                            <div className="css-log">
+                            {/* <div className="css-log">
                                 <div className="css-logs-container">
                                     {GameReducer.log.map((it, index) => {
                                         return it.ball == "bull" ? (
@@ -170,13 +170,13 @@ class Game extends React.Component {
                                         );
                                     })}
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
-                    <div className="css-footer" style={{ border: "1px solid grey" }} />
+                    <div className="css-footer" />
                 </div>
 
-                <div className="css-rightSide" style={{ border: "1px solid grey" }} />
+                <div className="css-rightSide" />
             </div>
         );
     }
